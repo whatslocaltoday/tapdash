@@ -1,0 +1,57 @@
+#gender label.btn{
+	background-color:#ffffff;
+	color:#000000;
+	border-color:#cccccc;
+}
+#gender label.btn.active{
+	background-color:#286090;
+	color:#ffffff;
+}
+.forgotpassword_form {
+    position: absolute;
+    top: 0;
+    width: 100%
+}
+.forgotpassword_form {
+    z-index: 21;
+    opacity: 0;
+    width: 100%
+}
+#forgotpass:target~.login_wrapper .forgotpassword_form {
+    z-index: 22;
+    animation-name: fadeInLeft;
+    animation-delay: .1s
+}
+#forgotpass:target~.login_wrapper .login_form{
+    animation-name: fadeOutLeft
+}
+.navbar.nav_title.innerlogoh a img{
+	width:100%;
+}
+.navbar.nav_title.innerlogoh{
+	min-height: 110px;
+    padding: 5% 20%;
+    border-bottom: 1px solid #1ABB9C !important;
+}
+#sidebanber > a{
+	position:fixed;
+	right:-18px;
+	top:50%;
+	background-color:#2A3F54;
+	padding: 5px;
+    color: #fff;
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-webkit-transform: rotate(90deg); /* Safari 3-8 */
+	transform: rotate(90deg);
+}
+#accountsetup .progress-bar{
+	border-radius:4px;
+}
+#accountsetupcbox1 .x_title h2{width:100%;}
+#accountsetupcbox1 .x_title h2 div{float:right;}
+#accountsetupcbox1 .form-group input{ display: inline;}
+#accountsetupcbox1 form .form-group .checkbox label h2{margin-top:0px;}
+.accountnumber {margin-top: 5px !important;}
+#view-selector-container .ViewSelector2 .ViewSelector2-item, #date-range-selector-1-container .DateRangeSelector .DateRangeSelector-item { float: left; padding: 5px 10px;}
+#view-selector-container .ViewSelector2 .ViewSelector2-item select{padding: 5px;}
+#date-range-selector-1-container .DateRangeSelector .DateRangeSelector-item input{padding: 2px;}
