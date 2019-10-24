@@ -72,15 +72,7 @@
 			  <h3>Campaign Graph</h3>
 			</div>
 		</div>
-	  <div class="row">
-		  <div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="x_panel">
-				<div class="x_content">
-					<div id="container" style="height: 300px;"></div>
-				</div>
-			</div>
-		  </div>
-	  </div>
+	  
 
     <!-- /top tiles -->
 
@@ -93,15 +85,15 @@
                     <h3>Network Activities <small>Graph title sub-title</small></h3>
                   </div>
                   <div class="col-md-6">
-                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                    <div id="reportrange" class="pull-right tapoutdate" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
                       <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                      <span>December 30, 2018 - January 28, 2019</span> <b class="caret"></b>
+                      <span></span> <b class="caret"></b>
                     </div>
                   </div>
                 </div>
 
                 <div class="col-md-12 col-sm-9 col-xs-12">
-                  <div id="chart_plot_01" class="demo-placeholder"></div>
+                <div id="container_homegraphmain" style="height: 350%"></div>
                 </div>
                
 
@@ -220,109 +212,112 @@
         
         <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
         <script type="text/javascript">
-var dom = document.getElementById("container");
-var myChart = echarts.init(dom);
-var app = {};
-option = null;
-app.title = 'test';
+// var dom = document.getElementById("container");
+// var myChart = echarts.init(dom);
+// var app = {};
+// option = null;
+// app.title = 'test';
 
-var colors = ['#5793f3', '#d14a61', '#675bba'];
+// var colors = ['#5793f3', '#d14a61', '#675bba'];
 
-option = {
-    color: colors,
+// option = {
+//     color: colors,
 
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'cross'
-        }
-    },
-    grid: {
-        right: '20%'
-    },
-    toolbox: {
-        feature: {
+//     tooltip: {
+//         trigger: 'axis',
+//         axisPointer: {
+//             type: 'cross'
+//         }
+//     },
+//     grid: {
+//         right: '20%'
+//     },
+//     toolbox: {
+//         feature: {
            
-            restore: {show: true, title:'Refresh'},
-            saveAsImage: {show: true, title:'Download'}
-        }
-    },
-    legend: {
-        data:['view','impression','Click']
-    },
-    xAxis: [
-        {
-            type: 'category',
-            axisTick: {
-                alignWithLabel: true
-            },
-            data: [<?php echo $grph_plan_dateimplod;?>]
-        }
-    ],
-    yAxis: [
-        {
-            type: 'value',
-            name: 'view',
-            position: 'right',
-            axisLine: {
-                lineStyle: {
-                    color: colors[0]
-                }
-            },
-            axisLabel: {
-                formatter: '{value}'
-            }
-        },
-        {
-            type: 'value',
-            name: 'impression',
-            position: 'right',
-            offset: 80,
-            axisLine: {
-                lineStyle: {
-                    color: colors[1]
-                }
-            },
-            axisLabel: {
-                formatter: '{value}'
-            }
-        },
-        {
-            type: 'value',
-            name: 'Click',
-            position: 'left',
-            axisLine: {
-                lineStyle: {
-                    color: colors[2]
-                }
-            },
-            axisLabel: {
-                formatter: '{value}'
-            }
-        }
-    ],
-    series: [
-        {
-            name:'view',
-            type:'bar',
-            data:[<?php echo $grph_plan_viewimplod; ?>]
-        },
-        {
-            name:'impression',
-            type:'bar',
-            yAxisIndex: 1,
-            data:[<?php echo $grph_plan_trafficimplod; ?>]
-        },
-        {
-            name:'Click',
-            type:'line',
-            yAxisIndex: 2,
-            data:[<?php echo $grph_plan_leadimplod; ?>]
-        }
-    ]
-};
-;
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
+//             restore: {show: true, title:'Refresh'},
+//             saveAsImage: {show: true, title:'Download'}
+//         }
+//     },
+//     legend: {
+//         data:['view','impression','Click']
+//     },
+//     xAxis: [
+//         {
+//             type: 'category',
+//             axisTick: {
+//                 alignWithLabel: true
+//             },
+//             data: [<?php echo $grph_plan_dateimplod;?>]
+//         }
+//     ],
+//     yAxis: [
+//         {
+//             type: 'value',
+//             name: 'view',
+//             position: 'right',
+//             axisLine: {
+//                 lineStyle: {
+//                     color: colors[0]
+//                 }
+//             },
+//             axisLabel: {
+//                 formatter: '{value}'
+//             }
+//         },
+//         {
+//             type: 'value',
+//             name: 'impression',
+//             position: 'right',
+//             offset: 80,
+//             axisLine: {
+//                 lineStyle: {
+//                     color: colors[1]
+//                 }
+//             },
+//             axisLabel: {
+//                 formatter: '{value}'
+//             }
+//         },
+//         {
+//             type: 'value',
+//             name: 'Click',
+//             position: 'left',
+//             axisLine: {
+//                 lineStyle: {
+//                     color: colors[2]
+//                 }
+//             },
+//             axisLabel: {
+//                 formatter: '{value}'
+//             }
+//         }
+//     ],
+//     series: [
+//         {
+//             name:'view',
+//             type:'bar',
+//             data:[<?php echo $grph_plan_viewimplod; ?>]
+//         },
+//         {
+//             name:'impression',
+//             type:'bar',
+//             yAxisIndex: 1,
+//             data:[<?php echo $grph_plan_trafficimplod; ?>]
+//         },
+//         {
+//             name:'Click',
+//             type:'line',
+//             yAxisIndex: 2,
+//             data:[<?php echo $grph_plan_leadimplod; ?>]
+//         }
+//     ]
+// };
+// ;
+// if (option && typeof option === "object") {
+//     myChart.setOption(option, true);
+// }
+
+
+
        </script>

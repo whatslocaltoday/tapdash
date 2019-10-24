@@ -45,10 +45,12 @@
     <!-- bootstrap-daterangepicker -->
     <script src="<?php echo base_url()?>admin-assets/vendors/moment/min/moment.min.js"></script>
     <script src="<?php echo base_url()?>admin-assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-    <!-- Custom Theme Scripts -->
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.3.0/echarts-en.js"></script>
     <script src="<?php echo base_url()?>admin-assets/build/js/custom.min.js"></script>
     <script src="<?php echo base_url()?>admin-assets/build/js/projectown.js"></script>
+    <script src="<?php echo base_url()?>admin-assets/build/js/prjchart.js"></script>
     <script>
       initSample();
     </script>

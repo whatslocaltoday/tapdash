@@ -44,6 +44,7 @@
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url()?>admin-assets/build/css/custom.min.css" rel="stylesheet">
     <link href="<?php echo base_url()?>admin-assets/build/css/custom-style.css" rel="stylesheet">
+    
   </head>
 
   <body class="nav-md">

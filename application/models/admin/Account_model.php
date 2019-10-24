@@ -938,6 +938,63 @@ Class Account_model extends CI_Model {
 
     }
 
+
+
+
+    //with date graph data
+
+    public function fetch_graph_data_under_useraccount_with_seletdeddat($start_Date,$end_Date)
+    {
+        $user_id=$this->session->userdata('user_id');
+        $role_id=$this->session->userdata('role_id');
+        if($role_id !='1')
+        {
+            if(!empty($_SESSION['projID']))
+            {
+             $proj_idsesion=$_SESSION['projID'];
+             $project_query="and project_details.id=".$proj_idsesion."";
+            }
+            else
+            {
+                $project_query="";
+            }
+            $where="project_users.is_active ='1' ".$project_query." and project_users.user_id =".$user_id." and plan_date between '".$start_Date."' and '".$end_Date."' and project_details.id !='' GROUP BY DATE(plan_date)";
+        }
+        if($role_id =='1')
+        {
+            if(!empty($_SESSION['projID']))
+            {
+             $proj_idsesion=$_SESSION['projID'];
+             $project_query="and userplanprocess.proj_id=".$proj_idsesion."";
+            }
+            else
+            {
+                $project_query="";
+            }
+            $where="userplanprocess.id !='' ".$project_query." and plan_date between '".$start_Date."' and '".$end_Date."' GROUP BY DATE(plan_date)";
+        }
+        //$this->db->distinct();
+        $this->db->select_sum('userplanprocess.view');
+        $this->db->select_sum('userplanprocess.traffic');
+        $this->db->select_sum('userplanprocess.lead');
+        $this->db->select('userplanprocess.plan_date');
+        $this->db->from('userplanprocess');
+        if($role_id !='1')
+        {
+        $this->db->join('project_users', 'project_users.project_id =userplanprocess.proj_id');
+		$this->db->join('project_details', 'project_users.project_id =project_details.id');
+        }
+        $this->db->where($where);
+        $query = $this->db->get();
+            if($query->num_rows()>0){
+                $data=$query->result();
+                return $data;
+            }
+            else{
+                return false;
+            }
+    }
+
 }
 
 ?>
