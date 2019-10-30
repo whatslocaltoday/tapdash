@@ -192,7 +192,7 @@ class Dashboard extends CI_Controller{
 
                     //     //for avarage time
 
-                         $uniq_avg_page=$this->unique_Page_view();
+                         //$uniq_avg_page=$this->unique_Page_view();
 
                    $data=array(
 

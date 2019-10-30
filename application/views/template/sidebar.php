@@ -175,7 +175,7 @@
                   <?php 	$menu_option=explode(",", $user_ap);
                 
 			if (in_array("17",$menu_option, TRUE))
-			{?> <li><a><i class="fa fa-code tip"></i>Google Adwords Plan Process <span class="fa fa-chevron-down"></span></a>
+			{?> <li><a><i class="fa fa-code tip"></i>Google Adwords<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     <?php 	$menu_option=explode(",", $user_ap);
 			if (in_array("17",$menu_option, TRUE))
@@ -206,7 +206,7 @@ echo base_url()?>admin/Process/upload_plan_process/">Upload Plan Process</a></li
                   <?php 	$menu_option=explode(",", $user_ap);
                 
                 if (in_array("66",$menu_option, TRUE))
-                {?> <li><a><i class="fa fa-code tip"></i>Facebbok Adwords Plan Process <span class="fa fa-chevron-down"></span></a>
+                {?> <li><a><i class="fa fa-code tip"></i>Facebbok Adwords<span class="fa fa-chevron-down"></span></a>
                               <ul class="nav child_menu">
                               <?php 	$menu_option=explode(",", $user_ap);
                 if (in_array("66",$menu_option, TRUE))
@@ -317,27 +317,9 @@ echo base_url()?>admin/Process/upload_plan_process/">Upload Plan Process</a></li
               foreach ($query->result() as $row3) { 
                
 
-
-
-
-
-
-
-										// $uid = $_SESSION['user_id'];
-									  //   $sql3 ="SELECT proj_d.* FROM project_users as proj_u LEFT JOIN project_details as proj_d ON proj_u.project_id = proj_d.id where proj_u.user_id='$uid' and proj_d.flag='1'";
-									
-                    //   $query3 = $this->db->query($sql3);
-                    //   if ($query3->num_rows() > 0) {
-                    //   foreach ($query3->result() as $row3) { 
-                     
                         
                         ?>
-												<?php 
-													// if($_SESSION['projID']==$row3->id)
-													// {
-													// 	$Displ_Proj=$row3->website;
-													// }
-												?>
+									
 									
                     <li><a href=" <?php echo base_url()?>dashboard/change-project/<?php echo $row3->id; ?>"><i ></i> <?php echo $row3->pname; ?></a></li>
                     

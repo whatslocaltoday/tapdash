@@ -33,7 +33,7 @@ $(document).ready(function () {
 
 
 
-  $(document).ready(function() {
+$(document).ready(function() {
     $("#reportrange").on("apply.daterangepicker", function(a, b) {
         var firstSelectDate;
         var lastSelectDate;
@@ -58,21 +58,6 @@ $(document).ready(function () {
 
     })
 });
-
-
-
-    function reload_cart() {
-        
-       var firstSelectDate_cok = getCookieJs('_FdateF_G_0019dtpk_itm');
-        var lastSelectDate_Cok = getCookieJs('_LdateL_G_0021dtpk_itm');
-
-        getdataforchartfirstwhole(firstSelectDate_cok, lastSelectDate_Cok);
-
-        getdataforchartfirst_Google(firstSelectDate_cok, lastSelectDate_Cok);
-
-        getdataforchartfirst_Facebbok(firstSelectDate_cok, lastSelectDate_Cok);
-    }
-
 
 // for cookie part 
 
@@ -101,10 +86,12 @@ function getCookieJs(name) {
 function eraseCookieJS(name) {   
     document.cookie = name+'=; Max-Age=-99999999;';  
 }
+
+
 function firTdropDownfunction() {
     var xfrst = document.getElementById("firTdropDown").value;
     setCookieJs('_dash_f_0047drp_itm',xfrst);
-    reload_cart();
+    
     return true;
      }
 
@@ -112,7 +99,7 @@ function firTdropDownfunction() {
 
     var xscnd = document.getElementById("seconDdropDown").value;
     setCookieJs('_dash_s_0048drp_itm',xscnd);
-    reload_cart();
+    
     return true;
         }
 
@@ -120,31 +107,14 @@ function firTdropDownfunction() {
 
     var xthird = document.getElementById("thirDdropDown").value;
     setCookieJs('_dash_t_0049drp_itm',xthird);
-    reload_cart();
+    
     return true;
         }
 
 function firstHomegraphp_All(data) {
-    var first_drp_sel_Item = getCookieJs('_dash_f_0047drp_itm');
-    var sec_drp_sel_Item = getCookieJs('_dash_s_0048drp_itm');
-    var thD_drp_sel_Item = getCookieJs('_dash_t_0049drp_itm');
 
-    if(first_drp_sel_Item == 'null')
-        {
-            first_drp_sel_Item="View";
-        }
-        if(sec_drp_sel_Item == 'null')
-        {
-            sec_drp_sel_Item="Impression";
-        }
-        if(thD_drp_sel_Item == 'null')
-        {
-            thD_drp_sel_Item="Conversion";
-        }
-
-
-    var rerults = data;
-
+   
+        
     var plan_date = new Array();
     var traffic = new Array();
     var view = new Array();
@@ -193,7 +163,7 @@ function firstHomegraphp_All(data) {
             }
         },
         legend: {
-            data: [first_drp_sel_Item, sec_drp_sel_Item, thD_drp_sel_Item]
+            data: ['View', 'Impression', 'Conversion']
         },
         xAxis: [{
             type: 'category',
@@ -204,7 +174,7 @@ function firstHomegraphp_All(data) {
         }],
         yAxis: [{
                 type: 'value',
-                name: first_drp_sel_Item,
+                name: 'view',
                 position: 'right',
                 axisLine: {
                     lineStyle: {
@@ -217,7 +187,7 @@ function firstHomegraphp_All(data) {
             },
             {
                 type: 'value',
-                name: sec_drp_sel_Item,
+                name: 'impression',
                 position: 'right',
                 offset: 80,
                 axisLine: {
@@ -231,7 +201,7 @@ function firstHomegraphp_All(data) {
             },
             {
                 type: 'value',
-                name: thD_drp_sel_Item,
+                name: 'Conversion',
                 position: 'left',
                 axisLine: {
                     lineStyle: {
@@ -244,18 +214,18 @@ function firstHomegraphp_All(data) {
             }
         ],
         series: [{
-                name: first_drp_sel_Item,
+                name: 'View',
                 type: 'bar',
                 data: view
             },
             {
-                name: sec_drp_sel_Item,
+                name: 'Impression',
                 type: 'bar',
                 yAxisIndex: 1,
                 data: traffic
             },
             {
-                name: thD_drp_sel_Item,
+                name: 'Conversion',
                 type: 'line',
                 yAxisIndex: 2,
                 data: lead
@@ -270,26 +240,6 @@ function firstHomegraphp_All(data) {
 
 
 function firstHomegraphp_All_Google(data) {
-
-
-    var first_drp_sel_Item = getCookieJs('_dash_f_0047drp_itm');
-    var sec_drp_sel_Item = getCookieJs('_dash_s_0048drp_itm');
-    var thD_drp_sel_Item = getCookieJs('_dash_t_0049drp_itm');
-
-    if(first_drp_sel_Item == 'null')
-        {
-            first_drp_sel_Item="View";
-        }
-        if(sec_drp_sel_Item == 'null')
-        {
-            sec_drp_sel_Item="Impression";
-        }
-        if(thD_drp_sel_Item == 'null')
-        {
-            thD_drp_sel_Item="Conversion";
-        }
-
-
     var rerults = data;
 
     var plan_date = new Array();
@@ -340,7 +290,7 @@ function firstHomegraphp_All_Google(data) {
             }
         },
         legend: {
-            data: [first_drp_sel_Item, sec_drp_sel_Item, 'Conversion']
+            data: ['View', 'Impression', 'Conversion']
         },
         xAxis: [{
             type: 'category',
@@ -351,7 +301,7 @@ function firstHomegraphp_All_Google(data) {
         }],
         yAxis: [{
                 type: 'value',
-                name: first_drp_sel_Item,
+                name: 'view',
                 position: 'right',
                 axisLine: {
                     lineStyle: {
@@ -364,7 +314,7 @@ function firstHomegraphp_All_Google(data) {
             },
             {
                 type: 'value',
-                name: sec_drp_sel_Item,
+                name: 'impression',
                 position: 'right',
                 offset: 80,
                 axisLine: {
@@ -391,18 +341,18 @@ function firstHomegraphp_All_Google(data) {
             }
         ],
         series: [{
-                name: first_drp_sel_Item,
+                name: 'View',
                 type: 'bar',
                 data: view
             },
             {
-                name: sec_drp_sel_Item,
+                name: 'Impression',
                 type: 'bar',
                 yAxisIndex: 1,
                 data: traffic
             },
             {
-                name: thD_drp_sel_Item,
+                name: 'Conversion',
                 type: 'line',
                 yAxisIndex: 2,
                 data: lead
@@ -417,24 +367,6 @@ function firstHomegraphp_All_Google(data) {
 
 
 function firstHomegraphp_All_Facebook(data) {
-
-    var first_drp_sel_Item = getCookieJs('_dash_f_0047drp_itm');
-    var sec_drp_sel_Item = getCookieJs('_dash_s_0048drp_itm');
-    var thD_drp_sel_Item = getCookieJs('_dash_t_0049drp_itm');
-
-    if(first_drp_sel_Item == 'null')
-        {
-            first_drp_sel_Item="View";
-        }
-        if(sec_drp_sel_Item == 'null')
-        {
-            sec_drp_sel_Item="Impression";
-        }
-        if(thD_drp_sel_Item == 'null')
-        {
-            thD_drp_sel_Item="Conversion";
-        }
-
     var rerults = data;
 
     var plan_date = new Array();
@@ -485,7 +417,7 @@ function firstHomegraphp_All_Facebook(data) {
             }
         },
         legend: {
-            data: [first_drp_sel_Item, 'Impression', 'Conversion']
+            data: ['View', 'Impression', 'Conversion']
         },
         xAxis: [{
             type: 'category',
@@ -496,7 +428,7 @@ function firstHomegraphp_All_Facebook(data) {
         }],
         yAxis: [{
                 type: 'value',
-                name: first_drp_sel_Item,
+                name: 'view',
                 position: 'right',
                 axisLine: {
                     lineStyle: {
@@ -509,7 +441,7 @@ function firstHomegraphp_All_Facebook(data) {
             },
             {
                 type: 'value',
-                name: sec_drp_sel_Item,
+                name: 'impression',
                 position: 'right',
                 offset: 80,
                 axisLine: {
@@ -523,7 +455,7 @@ function firstHomegraphp_All_Facebook(data) {
             },
             {
                 type: 'value',
-                name: thD_drp_sel_Item,
+                name: 'Conversion',
                 position: 'left',
                 axisLine: {
                     lineStyle: {
@@ -536,18 +468,18 @@ function firstHomegraphp_All_Facebook(data) {
             }
         ],
         series: [{
-                name: first_drp_sel_Item,
+                name: 'View',
                 type: 'bar',
                 data: view
             },
             {
-                name: sec_drp_sel_Item,
+                name: 'Impression',
                 type: 'bar',
                 yAxisIndex: 1,
                 data: traffic
             },
             {
-                name: thD_drp_sel_Item,
+                name: 'Conversion',
                 type: 'line',
                 yAxisIndex: 2,
                 data: lead

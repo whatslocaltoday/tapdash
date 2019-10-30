@@ -50,6 +50,22 @@ class Chart_data extends CI_Controller{
                   echo (json_encode($this->Account_model->fetch_graph_data_under_useraccount_with_seletdeddat($firstSelectDate,$lastSelectDate)));
             }
 
+            public function homepage_getfirstgrapho_Google()
+            {
+                 $firstSelectDate=$this->input->post('firstSelectDate');
+                 $lastSelectDate=$this->input->post('lastSelectDate');
+                  header('Content-Type: application/x-json; charset=utf-8');
+                  echo (json_encode($this->Account_model->fetch_graph_data_under_useraccount_with_seletdeddat_google($firstSelectDate,$lastSelectDate)));
+            }
+
+            public function homepage_getfirstgrapho_Facebbok()
+            {
+                 $firstSelectDate=$this->input->post('firstSelectDate');
+                 $lastSelectDate=$this->input->post('lastSelectDate');
+                  header('Content-Type: application/x-json; charset=utf-8');
+                  echo (json_encode($this->Account_model->fetch_graph_data_under_useraccount_with_seletdeddat_facebbok($firstSelectDate,$lastSelectDate)));
+            }
+
 
             public function get_timezone()
             {

@@ -1564,7 +1564,7 @@ class Process extends CI_Controller{
 
         $logged_user_id=$this->session->userdata('user_id');
 
-        $ch_permsn=$this->check_permission($post);
+       $ch_permsn=$this->check_permission($post);
 
         if ($ch_permsn=='0')
 
@@ -1613,25 +1613,11 @@ class Process extends CI_Controller{
                     $line_numbers++;
 
                     $count_check++;
-
-
-
                     /*skip first column*/
 
                     if($count_check == 1) {
 
-
-
-                        /*check if heading are not set properly*/
-
-                    //  print   $data_csv1[0];
-
-                    //     die;
-
                         if(count($data_csv1) == 7){
-
-
-
                         }else {
 
                             /*redirect to same page*/
@@ -1640,20 +1626,10 @@ class Process extends CI_Controller{
 
                             redirect(base_url().'admin/Process/upload_plan_process');
 
-                            // $url = "admin/Process/upload_plan_process";
-
-                            // $this->redirector($url);
-
                         }
 
                     }else{
-
-
-
                         $counting_errors = 0;
-
-
-
                         if ($counting_errors == 0) {
 
                             $proj_acc_id = $data_csv1[0];
@@ -1669,9 +1645,6 @@ class Process extends CI_Controller{
                             }
 
                         }
-
-
-
                         if ($counting_errors == 0) {
 
                             $campgn_date = $data_csv1[1];
@@ -1687,9 +1660,6 @@ class Process extends CI_Controller{
                             }
 
                         }
-
-
-
                         if ($counting_errors == 0) {
 
                             $campgn_imprsion = $data_csv1[2];
@@ -1706,28 +1676,16 @@ class Process extends CI_Controller{
 
                         }
 
-
-
-                       
-
-
-
                         $counting_errors = 0;
-
-
-
                     }
-
-
-
                 }
 
 
-
+                
 
 
                 if($is_validated) {
-
+                   
                     $row = 1;
 
                     $check_pojID="";
@@ -1785,13 +1743,7 @@ class Process extends CI_Controller{
                             if($result1)
 
                             {
-
-
-
                                 $check_pojID="1";
-
-                            
-
                             }
 
                             else
@@ -1839,29 +1791,16 @@ class Process extends CI_Controller{
                                 if($row1>2)
 
                                 {
-
-                                   
-
                                     $result3 = $this->Account_model->get_prject_account_no($data_csv3[0]);
 
                                     if($result3)
 
                                     {
-
                                         foreach($result3 as $row3)
 
                                         {
-
                                             $proIDget= $row3->id;
-
-                                           
-
                                         }
-
-                                     
-
-                                  
-
                                     $planDate = date('Y-m-d', strtotime(trim($data_csv3[1])));
 
                                
@@ -1920,11 +1859,16 @@ class Process extends CI_Controller{
                     redirect(base_url().'admin/Process/upload_plan_process');
 
                 }
+               
+                }else{
 
+                    /*redirect to same page*/
+    
+                    $this->session->set_flashdata('error_message', 'Please Check All Field.');
+    
+                    redirect(base_url().'admin/Process/upload_plan_process');
+    
                 }
-
-
-
 
 
             }else{
