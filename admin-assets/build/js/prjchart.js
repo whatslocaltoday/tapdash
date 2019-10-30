@@ -188,7 +188,6 @@ function firstHomegraphp_All(data) {
             }
             if(first_drp_sel_Item=='Cost')
             {
-                   // f_graPh_Item.push((value.cost).toFixed(2));       
                     f_graPh_Item.push(value.cost).toFixed(2);                   
             }
             if(first_drp_sel_Item=='Conv. Rate')
@@ -1008,7 +1007,7 @@ function firstHomegraphp_All_Facebook(data) {
 
 
 function getdataforchartfirstwhole(firstSelectDate, lastSelectDate) {
-    // Account_model->fetch_total_view_under_useraccount();
+    
     $.ajax({
         type: 'post',
         url: 'admin/Chart_data/homepage_getfirstgrapho',
