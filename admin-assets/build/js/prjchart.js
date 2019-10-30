@@ -1005,7 +1005,7 @@ function firstHomegraphp_All_Facebook(data) {
     }
 }
 
-
+//code for ajax request
 function getdataforchartfirstwhole(firstSelectDate, lastSelectDate) {
     
     $.ajax({
