@@ -14,7 +14,7 @@ $(document).ready(function () {
         // eraseCookieJS("_LdateL_G_0021dtpk_itm");
         var firstSelectDate = getCookieJs('_FdateF_G_0019dtpk_itm');
         var lastSelectDate = getCookieJs('_LdateL_G_0021dtpk_itm');
-//alert(lastSelectDate);
+// alert(lastSelectDate);
         if((firstSelectDate == 'null') || (lastSelectDate == 'null'))
         {
             firstSelectDate = d.getFullYear() + "-" + (d.getMonth()) + "-" + d.getDate();
@@ -124,24 +124,236 @@ function firTdropDownfunction() {
     return true;
         }
 
+        function first_Dropdwn_Calc()
+        {
+            
+        }
+
+
 function firstHomegraphp_All(data) {
     var first_drp_sel_Item = getCookieJs('_dash_f_0047drp_itm');
     var sec_drp_sel_Item = getCookieJs('_dash_s_0048drp_itm');
     var thD_drp_sel_Item = getCookieJs('_dash_t_0049drp_itm');
+    
+    if(!first_drp_sel_Item)
+    {
+        first_drp_sel_Item="View";
+    }
+    if(!sec_drp_sel_Item)
+    {
+        sec_drp_sel_Item="Impression";
+    }
+    if(!thD_drp_sel_Item)
+    {
+        thD_drp_sel_Item="Conversion";
+    }
 
-    if(first_drp_sel_Item == 'null')
+       
+    var rerults = data;
+
+    var plan_date = new Array();
+    var traffic = new Array();
+    var view = new Array();
+    var lead = new Array();
+
+    var cost = new Array();
+    var buget = new Array();
+
+
+    var f_graPh_Item = new Array();
+    var s_graPh_Item = new Array();
+    var t_graPh_Item = new Array();
+
+
+    $.each(rerults, function(index, value) {
+
+        if(first_drp_sel_Item=='Cost/Conv.')
+        {
+            if(value.lead){
+                f_graPh_Item.push((value.cost/value.lead).toFixed(2));
+            }           
+        }
+        if(first_drp_sel_Item=='View')
+        {
+                f_graPh_Item.push(value.view);                      
+        }
+        if(first_drp_sel_Item=='Impression')
+        {
+                f_graPh_Item.push(value.traffic);                      
+        }
+        if(first_drp_sel_Item=='Conversion')
+        {
+                f_graPh_Item.push(value.lead).toFixed(2);                      
+        }
+        if(first_drp_sel_Item=='Cost')
+        {
+                f_graPh_Item.push(value.cost);                      
+        }
+        if(first_drp_sel_Item=='Conv. Rate')
+        {
+            if(value.traffic){
+            f_graPh_Item.push((value.lead/value.traffic).toFixed(2));    
+            }     
+        }
+        if(first_drp_sel_Item=='CTR')
+        {
+            if(value.lead){
+                f_graPh_Item.push((value.traffic/value.lead).toFixed(2));    
+                }                  
+        }
+        if(first_drp_sel_Item=='Avg. CPC')
+        {
+            if(value.traffic){
+                f_graPh_Item.push((value.cost/value.traffic).toFixed(2));    
+                }                    
+        }
+
+
+        plan_date.push(value.plan_date);
+        traffic.push(value.traffic);
+        view.push(value.view);
+        lead.push(value.lead);
+        cost.push(value.cost);
+        buget.push(value.buget);
+
+        
+
+
+    });
+
+    alert(f_graPh_Item);
+    
+    var dom = document.getElementById("container_homegraphmain");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    app.title = 'Home graph';
+
+    var colors = ['#5793f3', '#d14a61', '#675bba'];
+
+    option = {
+        color: colors,
+
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross'
+            }
+        },
+        grid: {
+            right: '20%'
+        },
+        toolbox: {
+            feature: {
+                dataView: {
+                    show: true,
+                    readOnly: false
+                },
+                restore: {
+                    show: true
+                },
+                saveAsImage: {
+                    show: true
+                }
+            }
+        },
+        legend: {
+            data: [first_drp_sel_Item, sec_drp_sel_Item, thD_drp_sel_Item]
+        },
+        xAxis: [{
+            type: 'category',
+            axisTick: {
+                alignWithLabel: true
+            },
+            data: plan_date
+        }],
+        yAxis: [{
+                type: 'value',
+                name: first_drp_sel_Item,
+                position: 'right',
+                axisLine: {
+                    lineStyle: {
+                        color: colors[0]
+                    }
+                },
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            },
+            {
+                type: 'value',
+                name: sec_drp_sel_Item,
+                position: 'right',
+                offset: 80,
+                axisLine: {
+                    lineStyle: {
+                        color: colors[1]
+                    }
+                },
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            },
+            {
+                type: 'value',
+                name: thD_drp_sel_Item,
+                position: 'left',
+                axisLine: {
+                    lineStyle: {
+                        color: colors[2]
+                    }
+                },
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            }
+        ],
+        series: [{
+                name: first_drp_sel_Item,
+                type: 'bar',
+                data: f_graPh_Item
+            },
+            {
+                name: sec_drp_sel_Item,
+                type: 'bar',
+                yAxisIndex: 1,
+                data: traffic
+            },
+            {
+                name: thD_drp_sel_Item,
+                type: 'line',
+                yAxisIndex: 2,
+                data: lead
+            }
+        ]
+    };;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+}
+
+
+
+function firstHomegraphp_All_Google(data) {
+
+
+    var first_drp_sel_Item = getCookieJs('_dash_f_0047drp_itm');
+    var sec_drp_sel_Item = getCookieJs('_dash_s_0048drp_itm');
+    var thD_drp_sel_Item = getCookieJs('_dash_t_0049drp_itm');
+
+    if(!first_drp_sel_Item)
         {
             first_drp_sel_Item="View";
         }
-        if(sec_drp_sel_Item == 'null')
+        if(!sec_drp_sel_Item)
         {
             sec_drp_sel_Item="Impression";
         }
-        if(thD_drp_sel_Item == 'null')
+        if(!thD_drp_sel_Item)
         {
             thD_drp_sel_Item="Conversion";
         }
-
+      
 
     var rerults = data;
 
@@ -158,7 +370,7 @@ function firstHomegraphp_All(data) {
     });
 
 
-    var dom = document.getElementById("container_homegraphmain");
+    var dom = document.getElementById("container_homegraphmain_Google");
     var myChart = echarts.init(dom);
     var app = {};
     option = null;
@@ -269,168 +481,21 @@ function firstHomegraphp_All(data) {
 
 
 
-function firstHomegraphp_All_Google(data) {
-
-
-    var first_drp_sel_Item = getCookieJs('_dash_f_0047drp_itm');
-    var sec_drp_sel_Item = getCookieJs('_dash_s_0048drp_itm');
-    var thD_drp_sel_Item = getCookieJs('_dash_t_0049drp_itm');
-
-    if(first_drp_sel_Item == 'null')
-        {
-            first_drp_sel_Item="View";
-        }
-        if(sec_drp_sel_Item == 'null')
-        {
-            sec_drp_sel_Item="Impression";
-        }
-        if(thD_drp_sel_Item == 'null')
-        {
-            thD_drp_sel_Item="Conversion";
-        }
-
-
-    var rerults = data;
-
-    var plan_date = new Array();
-    var traffic = new Array();
-    var view = new Array();
-    var lead = new Array();
-    $.each(rerults, function(index, value) {
-
-        plan_date.push(value.plan_date);
-        traffic.push(value.traffic);
-        view.push(value.view);
-        lead.push(value.lead);
-    });
-
-
-    var dom = document.getElementById("container_homegraphmain_Google");
-    var myChart = echarts.init(dom);
-    var app = {};
-    option = null;
-    app.title = 'Home graph';
-
-    var colors = ['#5793f3', '#d14a61', '#675bba'];
-
-    option = {
-        color: colors,
-
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'cross'
-            }
-        },
-        grid: {
-            right: '20%'
-        },
-        toolbox: {
-            feature: {
-                dataView: {
-                    show: true,
-                    readOnly: false
-                },
-                restore: {
-                    show: true
-                },
-                saveAsImage: {
-                    show: true
-                }
-            }
-        },
-        legend: {
-            data: [first_drp_sel_Item, sec_drp_sel_Item, 'Conversion']
-        },
-        xAxis: [{
-            type: 'category',
-            axisTick: {
-                alignWithLabel: true
-            },
-            data: plan_date
-        }],
-        yAxis: [{
-                type: 'value',
-                name: first_drp_sel_Item,
-                position: 'right',
-                axisLine: {
-                    lineStyle: {
-                        color: colors[0]
-                    }
-                },
-                axisLabel: {
-                    formatter: '{value}'
-                }
-            },
-            {
-                type: 'value',
-                name: sec_drp_sel_Item,
-                position: 'right',
-                offset: 80,
-                axisLine: {
-                    lineStyle: {
-                        color: colors[1]
-                    }
-                },
-                axisLabel: {
-                    formatter: '{value}'
-                }
-            },
-            {
-                type: 'value',
-                name: 'Conversion',
-                position: 'left',
-                axisLine: {
-                    lineStyle: {
-                        color: colors[2]
-                    }
-                },
-                axisLabel: {
-                    formatter: '{value}'
-                }
-            }
-        ],
-        series: [{
-                name: first_drp_sel_Item,
-                type: 'bar',
-                data: view
-            },
-            {
-                name: sec_drp_sel_Item,
-                type: 'bar',
-                yAxisIndex: 1,
-                data: traffic
-            },
-            {
-                name: thD_drp_sel_Item,
-                type: 'line',
-                yAxisIndex: 2,
-                data: lead
-            }
-        ]
-    };;
-    if (option && typeof option === "object") {
-        myChart.setOption(option, true);
-    }
-}
-
-
-
 function firstHomegraphp_All_Facebook(data) {
 
     var first_drp_sel_Item = getCookieJs('_dash_f_0047drp_itm');
     var sec_drp_sel_Item = getCookieJs('_dash_s_0048drp_itm');
     var thD_drp_sel_Item = getCookieJs('_dash_t_0049drp_itm');
 
-    if(first_drp_sel_Item == 'null')
+    if(!first_drp_sel_Item)
         {
             first_drp_sel_Item="View";
         }
-        if(sec_drp_sel_Item == 'null')
+        if(!sec_drp_sel_Item)
         {
             sec_drp_sel_Item="Impression";
         }
-        if(thD_drp_sel_Item == 'null')
+        if(!thD_drp_sel_Item)
         {
             thD_drp_sel_Item="Conversion";
         }
@@ -485,7 +550,7 @@ function firstHomegraphp_All_Facebook(data) {
             }
         },
         legend: {
-            data: [first_drp_sel_Item, 'Impression', 'Conversion']
+            data: [first_drp_sel_Item, sec_drp_sel_Item, thD_drp_sel_Item]
         },
         xAxis: [{
             type: 'category',

@@ -45,13 +45,16 @@
               <div class="dashboard_graph">
                 <div class="row x_title">
                   <div class="col-md-3">
-                    <h3>All Social Activities</h3>
+                    <h3>All Social Chanel</h3>
                   </div>
                   <div class="col-md-3">
 
 
                     <h5>
+<?php 
+$cookie_Value_Fst_drP_iT= $this->input->cookie('_dash_f_0047drp_itm',true);
 
+?>
                     <div class="selct_drop ">
                       <select id="firTdropDown" onchange="firTdropDownfunction()" class="col-sm-3">
                       <option value="View">View</option>
@@ -135,7 +138,7 @@
               <div class="dashboard_graph">
                 <div class="row x_title">
                   <div class="col-md-6">
-                    <h3>Facebbok Activities <small>Graph title sub-title</small></h3>
+                    <h3>Facebbok Activities</h3>
                   </div>
                 </div>
                 <div class="col-md-12 col-sm-9 col-xs-12">

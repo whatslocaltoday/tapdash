@@ -977,6 +977,8 @@ Class Account_model extends CI_Model {
         $this->db->select_sum('userplanprocess.view');
         $this->db->select_sum('userplanprocess.traffic');
         $this->db->select_sum('userplanprocess.lead');
+        $this->db->select_sum('userplanprocess.cost');
+        $this->db->select_sum('userplanprocess.buget');
         $this->db->select('DATE_FORMAT(userplanprocess.plan_date, "%b %d %Y") as plan_date');
         $this->db->from('userplanprocess');
         if($role_id !='1')
@@ -1030,6 +1032,8 @@ Class Account_model extends CI_Model {
         $this->db->select_sum('userplanprocess.view');
         $this->db->select_sum('userplanprocess.traffic');
         $this->db->select_sum('userplanprocess.lead');
+        $this->db->select_sum('userplanprocess.cost');
+        $this->db->select_sum('userplanprocess.buget');
         $this->db->select('DATE_FORMAT(userplanprocess.plan_date, "%b %d %Y") as plan_date');
         $this->db->from('userplanprocess');
         if($role_id !='1')
@@ -1085,6 +1089,8 @@ Class Account_model extends CI_Model {
         $this->db->select_sum('userplanprocess.view');
         $this->db->select_sum('userplanprocess.traffic');
         $this->db->select_sum('userplanprocess.lead');
+        $this->db->select_sum('userplanprocess.cost');
+        $this->db->select_sum('userplanprocess.buget');
         $this->db->select('DATE_FORMAT(userplanprocess.plan_date, "%b %d %Y") as plan_date');
         $this->db->from('userplanprocess');
         if($role_id !='1')
