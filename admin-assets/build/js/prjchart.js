@@ -15,7 +15,11 @@ $(document).ready(function () {
         var firstSelectDate = getCookieJs('_FdateF_G_0019dtpk_itm');
         var lastSelectDate = getCookieJs('_LdateL_G_0021dtpk_itm');
 // alert(lastSelectDate);
-        if((firstSelectDate == 'null') || (lastSelectDate == 'null'))
+        if((firstSelectDate) || (lastSelectDate))
+        {
+            
+        }
+        else
         {
             firstSelectDate = d.getFullYear() + "-" + (d.getMonth()) + "-" + d.getDate();
             lastSelectDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
