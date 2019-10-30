@@ -45,7 +45,7 @@
               <div class="dashboard_graph">
                 <div class="row x_title">
                   <div class="col-md-3">
-                    <h3>All Social Chanel</h3>
+                    <h3>All Channel</h3>
                   </div>
                   <div class="col-md-3">
 
