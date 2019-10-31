@@ -402,27 +402,7 @@ Class Admintype_model extends CI_Model {
 
 //response mail 
 
-$config1 = Array(
 
-    'protocol' => 'smtp',
-
-    'smtp_host' => 'ssl://smtp.ssdrs2.layerip.com',
-
-    'smtp_port' => 465,
-
-  'smtp_user' => 'ramesh@whatslocal.today', 
-
-    'smtp_pass' => 'Ramesh2019', 
-
-    'mailtype' => 'html',
-
-    'charset' => 'iso-8859-1',
-
-    'wordwrap' => TRUE
-
-    );
-
-$this->load->library('email', $config1); 
 
 $message1="<div style='Margin: 0; padding-top: 0; padding-bottom: 0; -webkit-text-size-adjust: 100%; padding-right: 0; padding-left: 0; width: 100%; direction: ltr; background-color: #f5f5f5'>
 
@@ -624,19 +604,7 @@ $message1="<div style='Margin: 0; padding-top: 0; padding-bottom: 0; -webkit-tex
 
 </div>";
 
-$this->email->set_mailtype('html');
-
-$this->email->set_newline("\r\n");
-
-$this->email->from('ramesh@whatslocal.today', 'Tapouts Dashboard'); // change it to yours
-
-$this->email->to('shubhamsingh200@gmail.com');// change it to yours
-
-$this->email->subject('Welcome to Tapouts Dashboard');
-
-$this->email->message($message1);
-
-$this->email->send();		
+$sent = send_email($user_Email, 'Welcome to Tapouts Dashboard', $message1);			
 
      return true;
 
@@ -1682,31 +1650,22 @@ $this->email->send();
 
             $this->db->where('id',$id);
 
-            $this->db->update('user',$insdatauser);
+            $this->db->update('user1',$insdatauser);
 
             if ($this->db->affected_rows() > 0) {
 
-                $config1 = Array(
+                $this->db->where('id',$id);
 
-                    'protocol' => 'smtp',
-                
-                    'smtp_host' => 'ssl://smtp.ssdrs2.layerip.com',
-                
-                    'smtp_port' => 465,
-                
-                  'smtp_user' => 'ramesh@whatslocal.today', 
-                
-                    'smtp_pass' => 'Ramesh2019', 
-                
-                    'mailtype' => 'html',
-                
-                    'charset' => 'iso-8859-1',
-                
-                    'wordwrap' => TRUE
-                
-                    );
-                
-                $this->load->library('email', $config1); 
+                $query = $this->db->get('user');
+
+                if ($query->num_rows() > 0){
+
+                    $data=$query->result();
+                   $user_Email=$data[0]->u_email;
+
+                  
+                }
+
                 
                 $message1="<div style='Margin: 0; padding-top: 0; padding-bottom: 0; -webkit-text-size-adjust: 100%; padding-right: 0; padding-left: 0; width: 100%; direction: ltr; background-color: #f5f5f5'>
                 
@@ -1896,22 +1855,7 @@ $this->email->send();
                 
                 </div>";
                 
-
-               
-                $this->email->set_mailtype('html');
-                
-                $this->email->set_newline("\r\n");
-                
-                $this->email->from('ramesh@whatslocal.today', 'Tapouts Dashboard'); // change it to yours
-                
-                $this->email->to('shubhamsingh200@gmail.com');// change it to yours
-                
-                $this->email->subject('Tapouts Dashboard Password');
-                
-                $this->email->message($message1);
-                
-                $this->email->send();
-
+                $sent = send_email($user_Email, 'Tapouts Dashboard Password', $message1);	
                 
             return true;
 

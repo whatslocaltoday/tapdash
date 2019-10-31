@@ -231,31 +231,6 @@ Class Login_model extends CI_Model {
 
 				//response mail 
 
-
-
-			 $config1 = Array(
-
-				'protocol' => 'smtp',
-
-				'smtp_host' => 'ssl://smtp.ssdrs2.layerip.com',
-
-				'smtp_port' => 465,
-
-			  'smtp_user' => 'ramesh@whatslocal.today', 
-
-				'smtp_pass' => 'Ramesh2019', 
-
-
-
-				'mailtype' => 'html',
-
-				'charset' => 'iso-8859-1',
-
-				'wordwrap' => TRUE
-
-				);
-
-		  $this->load->library('email', $config1); 
 		  $message1="<div style='Margin: 0; padding-top: 0; padding-bottom: 0; -webkit-text-size-adjust: 100%; padding-right: 0; padding-left: 0; width: 100%; direction: ltr; background-color: #f5f5f5'>
 
 		  <center style='width: 100%; table-layout: fixed; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #f5f5f5;' >
@@ -469,24 +444,7 @@ Class Login_model extends CI_Model {
 	  </div>";
 
 
-
-
-
-
-
-		  $this->email->set_mailtype('html');
-
-		  $this->email->set_newline("\r\n");
-
-		  $this->email->from('ramesh@whatslocal.today', 'Tapouts Dashboard'); // change it to yours
-
-		  $this->email->to($data);// change it to yours
-
-		  $this->email->subject('Forgot Password Tapouts Dashboard');
-
-		  $this->email->message($message1);
-
-		  $this->email->send();			
+	  $sent = send_email($data, 'Forgot Password Tapouts Dashboard', $message1);		
 
 		 	return true;
 

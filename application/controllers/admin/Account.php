@@ -101,9 +101,6 @@ class Account extends CI_Controller{
                     $data["results"] = $this->Account_model->fetch_webiste_under_useraccount($role_id,$config["per_page"],$this->uri->segment(4));
 
                     $data['all_count'] = $all_count;
-
-               //     $data["results"] = $this->Account_model->fetch_webiste_under_useraccount($role_id);
-
                     $this->load->view('template/header');
 
                     $this->load->view('template/sidebar');
@@ -114,9 +111,7 @@ class Account extends CI_Controller{
          }
 
             public function get_timezone()
-
             {
-
                  $ajcountry=$this->input->post('ajcountry');
 
                   header('Content-Type: application/x-json; charset=utf-8');
