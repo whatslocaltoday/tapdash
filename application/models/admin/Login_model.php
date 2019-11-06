@@ -200,8 +200,10 @@ Class Login_model extends CI_Model {
                 $data1 = $query1->result();
                 //use role
                 $condition2 = "user_id =" . $data[0]->id . " AND user_role_id =" . $data1[0]->role_id . " and project_id in (select id from project_details where flag='1' order by id asc) ";
-                $this->db->select('*');
-                $this->db->from('project_users');
+               
+                $this->db->select('project_details.*');
+                $this->db->from('project_details');
+                $this->db->join('project_users', 'project_users.project_id =project_details.id');
                 $this->db->where($condition2);
                 $this->db->order_by("id", "asc");
                 $this->db->limit(1);
@@ -216,9 +218,33 @@ Class Login_model extends CI_Model {
                 $data8 = $query8->result();
                 $this->session->set_userdata('user_name', $data[0]->f_name);
                 if ($data[0]->last_web == '0') {
-                    $this->session->set_userdata('projID', $data2[0]->project_id);
+                    $this->session->set_userdata('projID', $data2[0]->id);
+
+                    $this->session->set_userdata('projWebiste_sesn', $data2[0]->website);
                 } else {
-                    $this->session->set_userdata('projID', $data[0]->last_web);
+                    if($data1[0]->role_id=='1')
+                    {
+                        $condition_2 = "project_details.id =" . $data[0]->last_web . " and flag='1' ";
+                    }
+                    else
+                    {
+                        $condition_2 = "user_id =" . $data[0]->id . " AND project_users.user_role_id =" . $data1[0]->role_id . " and project_details.id =" . $data[0]->last_web . " and flag='1' ";
+                    }
+                    
+               
+                    $this->db->select('project_details.*');
+                    $this->db->from('project_details');
+                    $this->db->join('project_users', 'project_users.project_id =project_details.id');
+                    $this->db->where($condition_2);
+                    $this->db->order_by("id", "asc");
+                    $this->db->limit(1);
+                    $query_2 = $this->db->get();
+                    $data_2 = $query_2->result();
+                   
+
+                    $this->session->set_userdata('projID', $data_2[0]->id);
+
+                    $this->session->set_userdata('projWebiste_sesn', $data_2[0]->website);
                 }
                 $this->session->set_userdata('user_id', $data[0]->id);
                 $this->session->set_userdata('uemail', $data[0]->u_email);

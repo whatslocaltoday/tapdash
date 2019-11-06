@@ -295,7 +295,7 @@
 function send_email($to, $subject, $msg){
     
     $config = Array(
-    'protocol' => 'smtp',
+    'protocol' => 'mail',
 	'smtp_host' => 'ssdrs2.layerip.com',
 	'smtp_port' => 587,
     'smtp_user' => 'info@dashboard.tapouts.online', 

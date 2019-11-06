@@ -541,9 +541,11 @@ Class Admintype_model extends CI_Model {
         }
     }
     public function permision_list($limit, $offset) {
+        $where = "is_active='1'";
         $this->db->select('*');
         $this->db->from('permission');
         $this->db->limit($limit, $offset);
+        $this->db->where($where);
         $query = $this->db->get();
         $result = $query->result();
         return $result;
@@ -580,11 +582,25 @@ Class Admintype_model extends CI_Model {
     public function update_user_flag_status($data, $id) {
         $insdatauser = array('flag' => $data);
         $this->db->where('id', $id);
-        $this->db->update('user1', $insdatauser);
+        $this->db->update('user', $insdatauser);
         if ($this->db->affected_rows() > 0) {
             return true;
         }
     }
+
+    public function update_lastseen_project($id,$data) {
+        $insdatauser = array('last_web' => $data);
+        $this->db->where('id', $id);
+        $this->db->update('user', $insdatauser);
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public function update_project_flag_status($data, $id) {
         $insdataproj = array('flag' => $data);
         $this->db->where('id', $id);
@@ -665,7 +681,7 @@ Class Admintype_model extends CI_Model {
         $new_pass = md5($password);
         $insdatauser = array('u_password' => $new_pass, 'edate' => $data['edate']);
         $this->db->where('id', $id);
-        $this->db->update('user1', $insdatauser);
+        $this->db->update('user', $insdatauser);
         if ($this->db->affected_rows() > 0) {
             $this->db->where('id', $id);
             $query = $this->db->get('user');

@@ -26,14 +26,15 @@ $(document).ready(function() {
         var lastSelectDate;
         firstSelectDate = b.startDate.format("YYYY-M-D");
         lastSelectDate = b.endDate.format("YYYY-M-D");
+        
         //set cookies for selectd date
         setCookieJs('_FdateF_G_0019dtpk_itm', firstSelectDate);
         setCookieJs('_LdateL_G_0021dtpk_itm', lastSelectDate);
         var firstSelectDate_cok = getCookieJs('_FdateF_G_0019dtpk_itm');
         var lastSelectDate_Cok = getCookieJs('_LdateL_G_0021dtpk_itm');
-        getdataforchartfirstwhole(firstSelectDate_cok, lastSelectDate_Cok);
-        getdataforchartfirst_Google(firstSelectDate_cok, lastSelectDate_Cok);
-        getdataforchartfirst_Facebbok(firstSelectDate_cok, lastSelectDate_Cok);
+        getdataforchartfirstwhole(firstSelectDate, lastSelectDate);
+        getdataforchartfirst_Google(firstSelectDate, lastSelectDate);
+        getdataforchartfirst_Facebbok(firstSelectDate, lastSelectDate);
     })
 });
 
@@ -48,7 +49,7 @@ function reload_cart() {
 function setCookieJs(name, value) {
     var expires = "";
     var date = new Date();
-    date.setDate(date.getDate() + 1);
+    date.setDate(date.getDate() + 365);
     expires = "; expires=" + date.toUTCString();
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
@@ -99,7 +100,7 @@ function firstHomegraphp_All(data) {
         first_drp_sel_Item = "View";
     }
     if (!sec_drp_sel_Item) {
-        sec_drp_sel_Item = "Impression";
+        sec_drp_sel_Item = "Traffic";
     }
     if (!thD_drp_sel_Item) {
         thD_drp_sel_Item = "Conversion";
@@ -116,7 +117,7 @@ function firstHomegraphp_All(data) {
     var t_graPh_Item = new Array();
     $.each(rerults, function(index, value) {
         if (first_drp_sel_Item) {
-            if (first_drp_sel_Item == 'Cost/Conv.') {
+            if (first_drp_sel_Item == 'CPA') {
                 if (value.lead != '0') {
                     f_graPh_Item.push((value.cost / value.lead).toFixed(2));
                 }
@@ -124,7 +125,7 @@ function firstHomegraphp_All(data) {
             if (first_drp_sel_Item == 'View') {
                 f_graPh_Item.push(value.view).toFixed(2);
             }
-            if (first_drp_sel_Item == 'Impression') {
+            if (first_drp_sel_Item == 'Traffic') {
                 f_graPh_Item.push(value.traffic).toFixed(2);
             }
             if (first_drp_sel_Item == 'Conversion') {
@@ -133,7 +134,7 @@ function firstHomegraphp_All(data) {
             if (first_drp_sel_Item == 'Cost') {
                 f_graPh_Item.push(value.cost).toFixed(2);
             }
-            if (first_drp_sel_Item == 'Conv. Rate') {
+            if (first_drp_sel_Item == 'CR') {
                 if (value.traffic != '0') {
                     f_graPh_Item.push((value.lead / value.traffic).toFixed(2));
                 }
@@ -143,14 +144,14 @@ function firstHomegraphp_All(data) {
                     f_graPh_Item.push((value.traffic / value.lead).toFixed(2));
                 }
             }
-            if (first_drp_sel_Item == 'Avg. CPC') {
+            if (first_drp_sel_Item == 'CPC') {
                 if (value.traffic != '0') {
                     f_graPh_Item.push((value.cost / value.traffic).toFixed(2));
                 }
             }
         }
         if (sec_drp_sel_Item) {
-            if (sec_drp_sel_Item == 'Cost/Conv.') {
+            if (sec_drp_sel_Item == 'CPA') {
                 if (value.lead != '0') {
                     s_graPh_Item.push((value.cost / value.lead).toFixed(2));
                 }
@@ -158,7 +159,7 @@ function firstHomegraphp_All(data) {
             if (sec_drp_sel_Item == 'View') {
                 s_graPh_Item.push(value.view).toFixed(2);
             }
-            if (sec_drp_sel_Item == 'Impression') {
+            if (sec_drp_sel_Item == 'Traffic') {
                 s_graPh_Item.push(value.traffic).toFixed(2);
             }
             if (sec_drp_sel_Item == 'Conversion') {
@@ -167,7 +168,7 @@ function firstHomegraphp_All(data) {
             if (sec_drp_sel_Item == 'Cost') {
                 s_graPh_Item.push(value.cost).toFixed(2);
             }
-            if (sec_drp_sel_Item == 'Conv. Rate') {
+            if (sec_drp_sel_Item == 'CR') {
                 if (value.traffic != '0') {
                     s_graPh_Item.push((value.lead / value.traffic).toFixed(2));
                 }
@@ -177,14 +178,14 @@ function firstHomegraphp_All(data) {
                     s_graPh_Item.push((value.traffic / value.lead).toFixed(2));
                 }
             }
-            if (sec_drp_sel_Item == 'Avg. CPC') {
+            if (sec_drp_sel_Item == 'CPC') {
                 if (value.traffic != '0') {
                     s_graPh_Item.push((value.cost / value.traffic).toFixed(2));
                 }
             }
         }
         if (thD_drp_sel_Item) {
-            if (thD_drp_sel_Item == 'Cost/Conv.') {
+            if (thD_drp_sel_Item == 'CPA') {
                 if (value.lead != '0') {
                     t_graPh_Item.push((value.cost / value.lead).toFixed(2));
                 }
@@ -192,7 +193,7 @@ function firstHomegraphp_All(data) {
             if (thD_drp_sel_Item == 'View') {
                 t_graPh_Item.push(value.view).toFixed(2);
             }
-            if (thD_drp_sel_Item == 'Impression') {
+            if (thD_drp_sel_Item == 'Traffic') {
                 t_graPh_Item.push(value.traffic).toFixed(2);
             }
             if (thD_drp_sel_Item == 'Conversion') {
@@ -201,7 +202,7 @@ function firstHomegraphp_All(data) {
             if (thD_drp_sel_Item == 'Cost') {
                 t_graPh_Item.push(value.cost).toFixed(2);
             }
-            if (thD_drp_sel_Item == 'Conv. Rate') {
+            if (thD_drp_sel_Item == 'CR') {
                 if (value.traffic != '0') {
                     t_graPh_Item.push((value.lead / value.traffic).toFixed(2));
                 }
@@ -211,7 +212,7 @@ function firstHomegraphp_All(data) {
                     t_graPh_Item.push((value.traffic / value.lead).toFixed(2));
                 }
             }
-            if (thD_drp_sel_Item == 'Avg. CPC') {
+            if (thD_drp_sel_Item == 'CPC') {
                 if (value.traffic != '0') {
                     t_graPh_Item.push((value.cost / value.traffic).toFixed(2));
                 }
@@ -339,7 +340,7 @@ function firstHomegraphp_All_Google(data) {
         first_drp_sel_Item = "View";
     }
     if (!sec_drp_sel_Item) {
-        sec_drp_sel_Item = "Impression";
+        sec_drp_sel_Item = "Traffic";
     }
     if (!thD_drp_sel_Item) {
         thD_drp_sel_Item = "Conversion";
@@ -356,7 +357,7 @@ function firstHomegraphp_All_Google(data) {
     var t_graPh_Item = new Array();
     $.each(rerults, function(index, value) {
         if (first_drp_sel_Item) {
-            if (first_drp_sel_Item == 'Cost/Conv.') {
+            if (first_drp_sel_Item == 'CPA') {
                 if (value.lead != '0') {
                     f_graPh_Item.push((value.cost / value.lead).toFixed(2));
                 }
@@ -364,7 +365,7 @@ function firstHomegraphp_All_Google(data) {
             if (first_drp_sel_Item == 'View') {
                 f_graPh_Item.push(value.view).toFixed(2);
             }
-            if (first_drp_sel_Item == 'Impression') {
+            if (first_drp_sel_Item == 'Traffic') {
                 f_graPh_Item.push(value.traffic).toFixed(2);
             }
             if (first_drp_sel_Item == 'Conversion') {
@@ -373,7 +374,7 @@ function firstHomegraphp_All_Google(data) {
             if (first_drp_sel_Item == 'Cost') {
                 f_graPh_Item.push(value.cost).toFixed(2);
             }
-            if (first_drp_sel_Item == 'Conv. Rate') {
+            if (first_drp_sel_Item == 'CR') {
                 if (value.traffic != '0') {
                     f_graPh_Item.push((value.lead / value.traffic).toFixed(2));
                 }
@@ -383,14 +384,14 @@ function firstHomegraphp_All_Google(data) {
                     f_graPh_Item.push((value.traffic / value.lead).toFixed(2));
                 }
             }
-            if (first_drp_sel_Item == 'Avg. CPC') {
+            if (first_drp_sel_Item == 'CPC') {
                 if (value.traffic != '0') {
                     f_graPh_Item.push((value.cost / value.traffic).toFixed(2));
                 }
             }
         }
         if (sec_drp_sel_Item) {
-            if (sec_drp_sel_Item == 'Cost/Conv.') {
+            if (sec_drp_sel_Item == 'CPA') {
                 if (value.lead != '0') {
                     s_graPh_Item.push((value.cost / value.lead).toFixed(2));
                 }
@@ -398,7 +399,7 @@ function firstHomegraphp_All_Google(data) {
             if (sec_drp_sel_Item == 'View') {
                 s_graPh_Item.push(value.view).toFixed(2);
             }
-            if (sec_drp_sel_Item == 'Impression') {
+            if (sec_drp_sel_Item == 'Traffic') {
                 s_graPh_Item.push(value.traffic).toFixed(2);
             }
             if (sec_drp_sel_Item == 'Conversion') {
@@ -407,7 +408,7 @@ function firstHomegraphp_All_Google(data) {
             if (sec_drp_sel_Item == 'Cost') {
                 s_graPh_Item.push(value.cost).toFixed(2);
             }
-            if (sec_drp_sel_Item == 'Conv. Rate') {
+            if (sec_drp_sel_Item == 'CR') {
                 if (value.traffic != '0') {
                     s_graPh_Item.push((value.lead / value.traffic).toFixed(2));
                 }
@@ -417,14 +418,14 @@ function firstHomegraphp_All_Google(data) {
                     s_graPh_Item.push((value.traffic / value.lead).toFixed(2));
                 }
             }
-            if (sec_drp_sel_Item == 'Avg. CPC') {
+            if (sec_drp_sel_Item == 'CPC') {
                 if (value.traffic != '0') {
                     s_graPh_Item.push((value.cost / value.traffic).toFixed(2));
                 }
             }
         }
         if (thD_drp_sel_Item) {
-            if (thD_drp_sel_Item == 'Cost/Conv.') {
+            if (thD_drp_sel_Item == 'CPA') {
                 if (value.lead != '0') {
                     t_graPh_Item.push((value.cost / value.lead).toFixed(2));
                 }
@@ -432,7 +433,7 @@ function firstHomegraphp_All_Google(data) {
             if (thD_drp_sel_Item == 'View') {
                 t_graPh_Item.push(value.view).toFixed(2);
             }
-            if (thD_drp_sel_Item == 'Impression') {
+            if (thD_drp_sel_Item == 'Traffic') {
                 t_graPh_Item.push(value.traffic).toFixed(2);
             }
             if (thD_drp_sel_Item == 'Conversion') {
@@ -441,7 +442,7 @@ function firstHomegraphp_All_Google(data) {
             if (thD_drp_sel_Item == 'Cost') {
                 t_graPh_Item.push(value.cost).toFixed(2);
             }
-            if (thD_drp_sel_Item == 'Conv. Rate') {
+            if (thD_drp_sel_Item == 'CR') {
                 if (value.traffic != '0') {
                     t_graPh_Item.push((value.lead / value.traffic).toFixed(2));
                 }
@@ -451,7 +452,7 @@ function firstHomegraphp_All_Google(data) {
                     t_graPh_Item.push((value.traffic / value.lead).toFixed(2));
                 }
             }
-            if (thD_drp_sel_Item == 'Avg. CPC') {
+            if (thD_drp_sel_Item == 'CPC') {
                 if (value.traffic != '0') {
                     t_graPh_Item.push((value.cost / value.traffic).toFixed(2));
                 }
@@ -578,7 +579,7 @@ function firstHomegraphp_All_Facebook(data) {
         first_drp_sel_Item = "View";
     }
     if (!sec_drp_sel_Item) {
-        sec_drp_sel_Item = "Impression";
+        sec_drp_sel_Item = "Traffic";
     }
     if (!thD_drp_sel_Item) {
         thD_drp_sel_Item = "Conversion";
@@ -595,7 +596,7 @@ function firstHomegraphp_All_Facebook(data) {
     var t_graPh_Item = new Array();
     $.each(rerults, function(index, value) {
         if (first_drp_sel_Item) {
-            if (first_drp_sel_Item == 'Cost/Conv.') {
+            if (first_drp_sel_Item == 'CPA') {
                 if (value.lead != '0') {
                     f_graPh_Item.push((value.cost / value.lead).toFixed(2));
                 }
@@ -603,7 +604,7 @@ function firstHomegraphp_All_Facebook(data) {
             if (first_drp_sel_Item == 'View') {
                 f_graPh_Item.push(value.view).toFixed(2);
             }
-            if (first_drp_sel_Item == 'Impression') {
+            if (first_drp_sel_Item == 'Traffic') {
                 f_graPh_Item.push(value.traffic).toFixed(2);
             }
             if (first_drp_sel_Item == 'Conversion') {
@@ -612,7 +613,7 @@ function firstHomegraphp_All_Facebook(data) {
             if (first_drp_sel_Item == 'Cost') {
                 f_graPh_Item.push(value.cost).toFixed(2);
             }
-            if (first_drp_sel_Item == 'Conv. Rate') {
+            if (first_drp_sel_Item == 'CR') {
                 if (value.traffic != '0') {
                     f_graPh_Item.push((value.lead / value.traffic).toFixed(2));
                 }
@@ -622,14 +623,14 @@ function firstHomegraphp_All_Facebook(data) {
                     f_graPh_Item.push((value.traffic / value.lead).toFixed(2));
                 }
             }
-            if (first_drp_sel_Item == 'Avg. CPC') {
+            if (first_drp_sel_Item == 'CPC') {
                 if (value.traffic != '0') {
                     f_graPh_Item.push((value.cost / value.traffic).toFixed(2));
                 }
             }
         }
         if (sec_drp_sel_Item) {
-            if (sec_drp_sel_Item == 'Cost/Conv.') {
+            if (sec_drp_sel_Item == 'CPA') {
                 if (value.lead != '0') {
                     s_graPh_Item.push((value.cost / value.lead).toFixed(2));
                 }
@@ -637,7 +638,7 @@ function firstHomegraphp_All_Facebook(data) {
             if (sec_drp_sel_Item == 'View') {
                 s_graPh_Item.push(value.view).toFixed(2);
             }
-            if (sec_drp_sel_Item == 'Impression') {
+            if (sec_drp_sel_Item == 'Traffic') {
                 s_graPh_Item.push(value.traffic).toFixed(2);
             }
             if (sec_drp_sel_Item == 'Conversion') {
@@ -646,7 +647,7 @@ function firstHomegraphp_All_Facebook(data) {
             if (sec_drp_sel_Item == 'Cost') {
                 s_graPh_Item.push(value.cost).toFixed(2);
             }
-            if (sec_drp_sel_Item == 'Conv. Rate') {
+            if (sec_drp_sel_Item == 'CR') {
                 if (value.traffic != '0') {
                     s_graPh_Item.push((value.lead / value.traffic).toFixed(2));
                 }
@@ -656,14 +657,14 @@ function firstHomegraphp_All_Facebook(data) {
                     s_graPh_Item.push((value.traffic / value.lead).toFixed(2));
                 }
             }
-            if (sec_drp_sel_Item == 'Avg. CPC') {
+            if (sec_drp_sel_Item == 'CPC') {
                 if (value.traffic != '0') {
                     s_graPh_Item.push((value.cost / value.traffic).toFixed(2));
                 }
             }
         }
         if (thD_drp_sel_Item) {
-            if (thD_drp_sel_Item == 'Cost/Conv.') {
+            if (thD_drp_sel_Item == 'CPA') {
                 if (value.lead != '0') {
                     t_graPh_Item.push((value.cost / value.lead).toFixed(2));
                 }
@@ -671,7 +672,7 @@ function firstHomegraphp_All_Facebook(data) {
             if (thD_drp_sel_Item == 'View') {
                 t_graPh_Item.push(value.view).toFixed(2);
             }
-            if (thD_drp_sel_Item == 'Impression') {
+            if (thD_drp_sel_Item == 'Traffic') {
                 t_graPh_Item.push(value.traffic).toFixed(2);
             }
             if (thD_drp_sel_Item == 'Conversion') {
@@ -680,7 +681,7 @@ function firstHomegraphp_All_Facebook(data) {
             if (thD_drp_sel_Item == 'Cost') {
                 t_graPh_Item.push(value.cost).toFixed(2);
             }
-            if (thD_drp_sel_Item == 'Conv. Rate') {
+            if (thD_drp_sel_Item == 'CR') {
                 if (value.traffic != '0') {
                     t_graPh_Item.push((value.lead / value.traffic).toFixed(2));
                 }
@@ -690,7 +691,7 @@ function firstHomegraphp_All_Facebook(data) {
                     t_graPh_Item.push((value.traffic / value.lead).toFixed(2));
                 }
             }
-            if (thD_drp_sel_Item == 'Avg. CPC') {
+            if (thD_drp_sel_Item == 'CPC') {
                 if (value.traffic != '0') {
                     t_graPh_Item.push((value.cost / value.traffic).toFixed(2));
                 }
@@ -815,7 +816,9 @@ function getdataforchartfirstwhole(firstSelectDate, lastSelectDate) {
         url: 'admin/Chart_data/homepage_getfirstgrapho',
         data: 'firstSelectDate=' + firstSelectDate + '&lastSelectDate=' + lastSelectDate, // Send dataFields var
         success: function(data) {
+            
             if ($.trim(data) != 'false') {
+              
                 firstHomegraphp_All(data);
                 return true;
             } else {

@@ -166,7 +166,7 @@ Class Account_model extends CI_Model {
         }
         $this->db->distinct();
         $this->db->select('userplanprocess.*,project_details.pname,project_details.website,currency.symbol');
-        $this->db->from('userplanprocess');
+        $this->db->from('userplanprocess1');
         $this->db->join('project_users', 'project_users.project_id =userplanprocess.proj_id');
         $this->db->join('project_details', 'project_details.id =project_users.project_id ');
         $this->db->join('currency', 'project_details.currency_id =currency.id ');
