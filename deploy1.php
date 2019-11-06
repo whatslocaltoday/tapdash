@@ -24,7 +24,9 @@ $commands = array(
 );
 
 
-//chdir("/home/[tapouts]/public_html");
+
+
+// chdir("/home/[tapouts]/public_html");
 // exec commands
 $output = '';
 foreach($commands AS $command){
