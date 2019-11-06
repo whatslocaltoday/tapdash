@@ -22,7 +22,9 @@ $commands = array(
     'git submodule update',
     'git submodule status',
 );
-chdir("/home/[SET_PATCH_TO_PROJECT]/public_html");
+
+
+//chdir("/home/[tapouts]/public_html");
 // exec commands
 $output = '';
 foreach($commands AS $command){
