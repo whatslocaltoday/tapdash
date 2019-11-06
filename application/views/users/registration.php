@@ -116,7 +116,7 @@
     <script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
 
     <!-- for  loaclhost -->
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         var CaptchaCallback = function() {
             grecaptcha.render('html_element', {
                 'sitekey': '<?php echo "6LdltZIUAAAAALRhKjbvZCFTnuJGGH-7GbHGx576" ?>'
@@ -141,13 +141,13 @@
         $(document).ready(function() {
             $("#c_password").keyup(checkPasswordMatch);
         });
-    </script>
+    </script> -->
 
     <!-- for online -->
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
    var CaptchaCallback = function() {
        grecaptcha.render('html_element', {
-           'sitekey': '<?php echo "6LcLca8UAAAAAK57yGoRLNGNC__WTuOOS-nSOLzY" ?>'
+           'sitekey': '<?php echo "6LdaXcAUAAAAAA8LQNxCE8tf5Xk-rpoOttfz2tkn" ?>'
        });
    };
 
@@ -168,6 +168,6 @@
    }
    $(document).ready(function() {
        $("#c_password").keyup(checkPasswordMatch);
-   }); -->
+   });
     </script>
 
