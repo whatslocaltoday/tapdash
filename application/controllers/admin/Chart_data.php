@@ -23,6 +23,7 @@ class Chart_data extends CI_Controller {
             redirect(base_url() . 'login/');
         }
     }
+    
     public function homepage_getfirstgrapho() {
         $firstSelectDate = $this->input->post('firstSelectDate');
         $lastSelectDate = $this->input->post('lastSelectDate');
