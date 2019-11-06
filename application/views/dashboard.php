@@ -58,25 +58,25 @@ $cookie_Value_Fst_drP_iT= $this->input->cookie('_dash_f_0047drp_itm',true);
                     <div class="selct_drop ">
                       <select id="firTdropDown" onchange="firTdropDownfunction()" class="col-sm-3">
                       <option value="View">View</option>
-                      <option value="Impression">Impression</option>
-                      <option value="Conversion">Conversion</option>
-                      <option value="Cost">Cost</option>
-                      <option value="Cost/Conv.">Cost/Conv.</option>
-                      <option value="Conv. Rate">Conv. Rate</option>
+                      <option value="CPC">CPC </option>
+                      <option value="Traffic">Traffic</option>
                       <option value="CTR">CTR</option>
-                      <option value="Avg. CPC">Avg. CPC </option>
+                      <option value="Cost">Cost</option>
+                      <option value="Conversion">Conversion</option>
+                      <option value="CR">CR</option>
+                      <option value="CPA">CPA</option>
                       </select> 
                    </div>
                    <div class="selct_drop ">
                       <select id="seconDdropDown" onchange="seconDdropDownfunction()" class="col-sm-3">
-                      <option value="Impression">Impression</option>
+                      <option value="Traffic">Traffic</option>
                       <option value="View">View</option>
-                      <option value="Conversion">Conversion</option>
-                      <option value="Cost">Cost</option>
-                      <option value="Cost/Conv.">Cost/Conv.</option>
-                      <option value="Conv. Rate">Conv. Rate</option>
+                      <option value="CPC">CPC </option>
                       <option value="CTR">CTR</option>
-                      <option value="Avg. CPC">Avg. CPC </option>
+                      <option value="Cost">Cost</option>
+                      <option value="Conversion">Conversion</option>
+                      <option value="CR">CR</option>
+                      <option value="CPA">CPA</option>
                       </select> 
                    </div>
 
@@ -84,12 +84,12 @@ $cookie_Value_Fst_drP_iT= $this->input->cookie('_dash_f_0047drp_itm',true);
                       <select id="thirDdropDown" onchange="thirDdropDownfunction()" class="col-sm-3">
                       <option value="Conversion">Conversion</option>
                       <option value="View">View</option>
-                      <option value="Impression">Impression</option>
-                      <option value="Cost">Cost</option>
-                      <option value="Cost/Conv.">Cost/Conv.</option>
-                      <option value="Conv. Rate">Conv. Rate</option>
+                      <option value="CPC">CPC </option>
+                      <option value="Traffic">Traffic</option>
                       <option value="CTR">CTR</option>
-                      <option value="Avg. CPC">Avg. CPC </option>
+                      <option value="Cost">Cost</option>
+                      <option value="CR">CR</option>
+                      <option value="CPA">CPA</option>
                       </select> 
                    </div>
 
@@ -132,7 +132,7 @@ $cookie_Value_Fst_drP_iT= $this->input->cookie('_dash_f_0047drp_itm',true);
           </div>
           <br/>
 
-
+          
           <div id="third_div_graph" style="display: none;" class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="dashboard_graph">

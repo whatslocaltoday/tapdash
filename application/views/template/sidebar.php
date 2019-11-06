@@ -11,20 +11,19 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <?php 
-                  if(!empty($_SESSION['projID']))
-                  {
+                  // if(!empty($_SESSION['projID']))
+                  // {
+                  //   ?>
+	                 <!-- <li><a href="<?php echo base_url()?>dashboardmain/"><i class="fa fa-home"></i> Dashboard Home</a></li> -->
+                     <?php
+                  // }
+                  // else
+                  // {
                     ?>
-	<li><a href="<?php echo base_url()?>dashboardmain/"><i class="fa fa-home"></i> Dashboard Home</a></li>
-                    <?php
-                  }
-                  else
-                  {
-                    ?>
-	<li><a href="<?php echo base_url()?>dashboard/"><i class="fa fa-home"></i> Dashboard</a></li>
-<?php
-                  }
+	<li><a href="<?=base_url(); ?>dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
+ <?php
+                 // }
                   ?>
-			
 				<!-- <li><a href="<?php if(!empty($_SESSION['projWebiste_sesn'])) {echo $_SESSION['projWebiste_sesn'];} ?>" target="_blank"><i class="fa fa-flag tip"></i>Site View</a></li> -->
 
 
@@ -127,10 +126,6 @@
 
 <!-- setting end -->
 
-
-
-
-
 				 <?php 	$menu_option=explode(",", $user_ap);
 			if (in_array("1",$menu_option, TRUE))
 			{?> <li><a><i class="fa fa-user tip"></i> User Manager <span class="fa fa-chevron-down"></span></a>
@@ -145,12 +140,6 @@
                     </ul>
                   </li>
                   <?php }?>
-
-
-
-                
-
-
 
 
                   <?php 	$menu_option=explode(",", $user_ap);
@@ -226,17 +215,14 @@ echo base_url()?>admin/Process/upload_plan_process/">Upload Plan Process</a></li
           
           echo base_url()?>admin/Process/fb_upload_plan_process/">Upload Plan Process</a></li>
           
-          <?php }?>
-          
-          
-                               
+          <?php }?> 
                               </ul>
                             </li>
                             <?php }?>
 
 
 
-                  <li><a href="<?php echo base_url()?>seo_dashboard/"><i class="fa fa-bar-chart"></i>SEO Dashboard</a>
+                  <li><a href="http://track.whatslocaltoday.com/login.html" target="_blank"><i class="fa fa-bar-chart"></i>SEO Dashboard</a>
                   </li>
 				  <!--<li><a><i class="fa fa-cog tip"></i> Setting <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -298,11 +284,11 @@ echo base_url()?>admin/Process/upload_plan_process/">Upload Plan Process</a></li
         $role_id=$this->session->userdata('role_id');
         if($role_id !='1')
         {
-            $where="project_users.is_active ='1' and project_users.user_id =".$user_id ." and project_details.id !=''";
+            $where="project_users.is_active ='1' and project_users.user_id =".$user_id ." and project_details.flag='1' and project_details.id !=''";
         }
         if($role_id =='1')
         {
-            $where="project_details.id !=''";
+            $where="project_details.id !='' and project_details.flag='1'";
         }
         $this->db->distinct();
         $this->db->select('project_details.*');

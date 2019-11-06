@@ -166,6 +166,7 @@ class Dashboard extends CI_Controller {
                 $_SESSION['projWebiste_sesn'] = $data[0]->website;
                 $_SESSION['projview_id_sesn'] = $data[0]->analytics_view_id;
                 if (!empty($prj_id)) {
+                    $result = $this->Admintype_model->update_lastseen_project($user_id,$prj_id);
                     redirect(base_url() . 'dashboard');
                     exit();
                 }
