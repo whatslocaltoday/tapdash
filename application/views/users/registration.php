@@ -59,7 +59,7 @@
                                                     <input type="text" class="form-control" name="l_name" id="l_name" autocomplete="off" required placeholder="Last Name"> <span class="fa fa-user form-control-feedback left" aria-hidden="true">*</span> <span><?=form_error('l_name')?></span>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <div class="col-md-12">
                                                     <input type="text" class="form-control" name="proj_name" id="proj_name" autocomplete="off" required placeholder="Website Title"> <span class="fa-address-book form-control-feedback left" aria-hidden="true">*</span> <span><?=form_error('proj_name')?></span>
                                                 </div>
@@ -68,7 +68,7 @@
                                                 <div class="col-md-12">
                                                     <input type="text" class="form-control" name="proj_website" id="proj_website" autocomplete="off" required placeholder="Website Url"> <span class="fa-address-book form-control-feedback left" aria-hidden="true">*</span>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <input type="email" class="form-control" name="u_email" id="u_email" autocomplete="off" required placeholder="Email"> <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
@@ -90,7 +90,10 @@
                                                 <div class="form-group col-md-12">
                                                     <button class="login-btn" type="button" onclick="validate_captcha()">Sign Up</button>
                                                 </div>
-                                                <button type="submit" class="submit1" id="submit" hidden>Sign Up</button>
+                                                <button type="submit" class="submit1" id="submit" hidden>Sign Up</button><br><hr />
+                                                <a href="<?php echo $loginURL;?>">
+							<img src="<?php echo base_url()?>admin-assets/images/google-sign-in.png" alt="Google" style="height: 50px;">
+</a>
                                                 <!-- <div class="form-group col-md-12 clearfix"> <button class="btn btn-primary col-md-6" type="submit">Singup</button></div> -->
                                                 <div class="clearfix"></div>
                                                 <div class="form-group">
@@ -116,7 +119,7 @@
     <script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
 
     <!-- for  loaclhost -->
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         var CaptchaCallback = function() {
             grecaptcha.render('html_element', {
                 'sitekey': '<?php echo "6LdltZIUAAAAALRhKjbvZCFTnuJGGH-7GbHGx576" ?>'
@@ -141,10 +144,10 @@
         $(document).ready(function() {
             $("#c_password").keyup(checkPasswordMatch);
         });
-    </script> -->
+    </script>
 
     <!-- for online -->
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
    var CaptchaCallback = function() {
        grecaptcha.render('html_element', {
            'sitekey': '<?php echo "6LdaXcAUAAAAAA8LQNxCE8tf5Xk-rpoOttfz2tkn" ?>'
@@ -169,5 +172,5 @@
    $(document).ready(function() {
        $("#c_password").keyup(checkPasswordMatch);
    });
-    </script>
+    </script> -->
 

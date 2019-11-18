@@ -5,8 +5,19 @@
         $session_role_name=$this->session->userdata('session_role_name');
         $admin_name=ucwords($admin_name);
         $session_role_name=ucwords($session_role_name);
-     
+
+         $projIDpop=$this->session->userdata('projID');
+
+        $_SERVER['REQUEST_URI'];
+        if(!empty($projIDpop))
+        {}
+        else
+        {
+          include('popupprojet.php');
+        }
+       
         ?>
+  
 <!DOCTYPE html>
 <html lang="en">
   <head>

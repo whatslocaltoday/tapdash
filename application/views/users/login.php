@@ -98,6 +98,10 @@ if (isset($this->session->userdata['logged_in'])) {
 						  </div>
 						  <div class="form-group col-md-12 clearfix">
 						  <button class="login-btn" type="submit">Login</button>
+						  
+						    <a href="<?php echo $loginURL;?>">
+							<img src="<?php echo base_url()?>admin-assets/images/google-sign-in.png" alt="Google" style="height: 50px;">
+</a>
 						  <button id="ajax-loader-button" class="btn btn-link " type="button" style="margin-bottom: -20px; margin-top: -5px;display:none;"><i id="animate-icon" class="fa fa-spinner fa fa-2x fa-spin"></i></button></div>
 					  </form>
 					  <div class="go-to"><a href="<?php echo base_url(); ?>registration/" class="pull-left" >Create Account</a> <a href="<?php echo base_url(); ?>reset-password" class="pull-right">Reset your password</a></div>
@@ -108,3 +112,6 @@ if (isset($this->session->userdata['logged_in'])) {
 	</div>
   </body>
 </html>
+<script type="text/javascript">
+localStorage.clear();
+</script>

@@ -125,8 +125,13 @@
                   <?php }?>
 
 <!-- setting end -->
-
-				 <?php 	$menu_option=explode(",", $user_ap);
+<?php
+              $projIDpop=$this->session->userdata('projID');
+             
+              if(!empty($projIDpop))
+              {
+          
+				$menu_option=explode(",", $user_ap);
 			if (in_array("1",$menu_option, TRUE))
 			{?> <li><a><i class="fa fa-user tip"></i> User Manager <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -139,7 +144,7 @@
                       <!--<li><a href="#">Manage User Group</a></li>-->
                     </ul>
                   </li>
-                  <?php }?>
+                  <?php }}?>
 
 
                   <?php 	$menu_option=explode(",", $user_ap);
@@ -268,6 +273,13 @@ echo base_url()?>admin/Process/upload_plan_process/">Upload Plan Process</a></li
               <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
+              <?php
+              $projIDpop=$this->session->userdata('projID');
+              $user_id=$this->session->userdata('user_id');
+              $role_id=$this->session->userdata('role_id');
+              if(!empty($projIDpop))
+              {
+              ?>
               <ul class="nav navbar-nav navbar-left">
                 <li class="">
                 <a href="javascript:;" data-toggle="dropdown" aria-expanded="false">
@@ -280,8 +292,7 @@ echo base_url()?>admin/Process/upload_plan_process/">Upload Plan Process</a></li
                  
                   <?php 
 
-    $user_id=$this->session->userdata('user_id');
-        $role_id=$this->session->userdata('role_id');
+    
         if($role_id !='1')
         {
             $where="project_users.is_active ='1' and project_users.user_id =".$user_id ." and project_details.flag='1' and project_details.id !=''";
@@ -318,7 +329,20 @@ echo base_url()?>admin/Process/upload_plan_process/">Upload Plan Process</a></li
 <li class="web-url"><?php if(!empty($_SESSION['projWebiste_sesn'])) {echo $_SESSION['projWebiste_sesn'];} ?></li>		
 <?php } ?>		
               </ul>
+<?php
+              }
+              if((empty($projIDpop)) && ($role_id=='5'))
+              {
+                ?>
+                 <ul class="nav navbar-nav navbar-left">
+                <li class="">
+ <a href="<?php echo base_url(); ?>dashboard/add-webiste/"><h3 class="label label-primary">Click Here To add Website</h3></a>
+ </li>  
+              </ul>
+                <?php
+              }
 
+?>
 
 
               <ul class="nav navbar-nav navbar-right">

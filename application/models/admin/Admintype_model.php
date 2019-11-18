@@ -274,8 +274,29 @@ Class Admintype_model extends CI_Model {
         if ($this->db->affected_rows() > 0) {
             $project_id = $this->db->insert_id();
             // for project group
-            $insdatausergrp = array('user_id' => $user_id, 'user_role_id' => '', 'is_active' => $data['flag'], 'project_id' => $project_id);
+            
+            $usr_role_id=$this->session->userdata('role_id');
+            if($usr_role_id=='5')
+            {
+                $usr_role_id_insrt=$usr_role_id;
+            }
+            else
+            {
+                $usr_role_id_insrt='';
+            }
+            $insdatausergrp = array('user_id' => $user_id, 'user_role_id' => $usr_role_id_insrt, 'is_active' => $data['flag'], 'project_id' => $project_id);
             $this->db->insert('project_users', $insdatausergrp);
+
+             $projIDpop=$this->session->userdata('projID');
+
+          
+            if(empty($projIDpop))
+            {
+                $this->session->set_userdata('projID', $project_id);
+
+                $this->session->set_userdata('projWebiste_sesn', $data['website']); 
+            }
+
             return true;
         } else {
             return false;
