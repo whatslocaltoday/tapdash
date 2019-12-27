@@ -303,6 +303,7 @@ Class Login_model extends CI_Model {
 
 
     public function login_google($data) {
+        
         $condition = "u_email =" . "'" . $data['u_email'] . "'  AND flag='1'";
         $this->db->select('*');
         $this->db->from('user');
@@ -311,7 +312,7 @@ Class Login_model extends CI_Model {
         $query = $this->db->get();
         if ($query->num_rows() == 1) {
             $rsedata = $query->result();
-            $lastlogin = array('last_login' => time());
+            $lastlogin = array('last_login' => time(),'u_photo'=> $data['u_photo']);
             $this->db->where('id', $rsedata[0]->id);
             $this->db->update('user', $lastlogin);
             //select user role id from user group table
@@ -346,9 +347,19 @@ Class Login_model extends CI_Model {
                 $data8 = $query8->result();
                 $this->session->set_userdata('user_name', $data[0]->f_name);
                 if ($data[0]->last_web == '0') {
-                    $this->session->set_userdata('projID', $data2[0]->id);
+                    if(!empty($data2[0]->id))
+                    {
+                        $this->session->set_userdata('projID', $data2[0]->id);
 
-                    $this->session->set_userdata('projWebiste_sesn', $data2[0]->website);
+                        $this->session->set_userdata('projWebiste_sesn', $data2[0]->website);
+                    }
+                    else
+                    {
+                        $this->session->set_userdata('projID', '');
+
+                        $this->session->set_userdata('projWebiste_sesn', '');
+                    }
+                   
                 } else {
                     if($data1[0]->role_id=='1')
                     {
@@ -376,6 +387,7 @@ Class Login_model extends CI_Model {
                 }
                 $this->session->set_userdata('user_id', $data[0]->id);
                 $this->session->set_userdata('uemail', $data[0]->u_email);
+                $this->session->set_userdata('session_photo', $data[0]->u_photo);
                 $this->session->set_userdata('role_id', $data1[0]->role_id);
                 $this->session->set_userdata('session_role_name', $data8[0]->name);
                 $this->session->set_userdata('logged_in', $session_data);

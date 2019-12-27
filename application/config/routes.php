@@ -112,6 +112,7 @@ $route['seo/website-traffic']='admin/Seo/web_traffic_analytics';
 $route['seo/search-page-title']='admin/Seo/search_page_title';
 $route['seo/source-medium']='admin/Seo/source_medium';
 $route['seo/searched-keyword']='admin/Seo/searched_keyword';
+$route['google-analytics']='admin/Seo';
 
 
 $route['seo/main-graph']='admin/Seo/web_traffic_analytics_home';
@@ -121,5 +122,17 @@ $route['accounts']='admin/Account/accounts';
 
 
 $route['forgot_auth/(:any)'] = 'admin/User_authentication/forgot_Pass_word/$1';
+
+
+
+
+//analytics
+
+$route['analytics_login']='admin/LoginWithGooglePlus/login';
+
+$route['analytics_overview']='admin/LoginWithGooglePlus/mainAnalyticsDashboard';
+$route['disconnect-analytics']='admin/LoginWithGooglePlus/discoonect_analytics';
+
+
 
 

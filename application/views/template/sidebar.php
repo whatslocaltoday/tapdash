@@ -27,7 +27,7 @@
 				<!-- <li><a href="<?php if(!empty($_SESSION['projWebiste_sesn'])) {echo $_SESSION['projWebiste_sesn'];} ?>" target="_blank"><i class="fa fa-flag tip"></i>Site View</a></li> -->
 
 
-
+        <li><a href="<?php echo base_url()?>analytics_login/"><i class="fa fa-home"></i>Google Analytics</a></li>
 
         <li><a href="<?php echo base_url()?>accounts/"><i class="fa fa-home"></i> Accounts</a></li>
 				  <!--<li><a href="#"><i class="fa fa-picture-o tip"></i> Slide Manager</a></li>-->
@@ -123,7 +123,60 @@
 
                   </li>
                   <?php }?>
+                  <?php 	$menu_option=explode(",", $user_ap);
+			if (in_array("1",$menu_option, TRUE))
+			{
+        ?> 
+        <li><a><i class="fa fa-user tip"></i> SEO <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <?php 
+                     if(!empty($_SESSION['projID']))
+                     {
 
+
+                      $menu_option=explode(",", $user_ap);
+                    if (in_array("1",$menu_option, TRUE) && !empty($_SESSION['projview_id_sesn']))
+                    {?>   
+                     <li><a href="<?php echo base_url()?>seo/website-traffic/">Website Traffic</a></li> 
+                       <?php } 
+
+
+                    $menu_option=explode(",", $user_ap);
+                    if (in_array("1",$menu_option, TRUE))
+                    {?>    <li><a href="<?php echo base_url()?>seo/alexa-graph/">Website Alexa Graph</a></li>   <?php } 
+
+
+                    $menu_option=explode(",", $user_ap);
+                    if (in_array("1",$menu_option, TRUE) && !empty($_SESSION['projview_id_sesn']))
+                    {?>    <li><a href="<?php echo base_url()?>seo/search-page-title/">Search Page Title</a></li>   <?php } 
+
+
+                    $menu_option=explode(",", $user_ap);
+                    if (in_array("1",$menu_option, TRUE) && !empty($_SESSION['projview_id_sesn']))
+                    {?>    <li><a href="<?php echo base_url()?>seo/source-medium/">Source & Medium</a></li>   <?php } 
+
+                    $menu_option=explode(",", $user_ap);
+                    if (in_array("1",$menu_option, TRUE) && !empty($_SESSION['projview_id_sesn']))
+                    {?>    <li><a href="<?php echo base_url()?>seo/main-graph/">home graph</a></li>   <?php } 
+
+                    $menu_option=explode(",", $user_ap);
+                    if (in_array("1",$menu_option, TRUE) && !empty($_SESSION['projview_id_sesn']))
+                    {?>    <li><a href="<?php echo base_url()?>seo/searched-keyword/">Searched Keyword</a></li>   <?php } 
+      
+              }?>
+                    
+      <?php 	$menu_option=explode(",", $user_ap);
+			if (in_array("16",$menu_option, TRUE)) { ?><li><a href="<?php echo base_url()?>admin/Process/keyword_idea/">Get Keyword Idea</a></li><?php } ?>
+
+
+      
+                      <!--<li><a href="#">Manage User Group</a></li>-->
+                    </ul>
+                  </li>
+                  <?php
+                
+                }
+                ?>
 <!-- setting end -->
 <?php
               $projIDpop=$this->session->userdata('projID');
@@ -348,7 +401,22 @@ echo base_url()?>admin/Process/upload_plan_process/">Upload Plan Process</a></li
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo base_url()?>admin-assets/images/img.jpg" alt="">
+                  <?php 
+              $session_photo=$this->session->userdata('session_photo');
+                if(!empty($session_photo))
+                {
+                  ?>
+                  <img src="<?php echo $session_photo; ?>" alt="...">
+                  
+                  <?php 
+                } else
+                {
+                  ?>
+                 <img src="<?php echo base_url()?>admin-assets/images/img.jpg" alt="">
+                  <?php 
+                }
+              ?>
+                    
                       <span>Welcome</span> <?php
                       
                       //print_r($this->session->userdata('logged_in')); 

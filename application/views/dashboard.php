@@ -39,7 +39,13 @@
 
 	
     <!-- /top tiles -->
-
+    <?php
+    $projIDpopdsb=$this->session->userdata('projID');
+   //die;
+   
+    if($projIDpopdsb !='0')
+{
+?>
     <div id="first_div_graph"  class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="dashboard_graph">
@@ -99,6 +105,8 @@ $cookie_Value_Fst_drP_iT= $this->input->cookie('_dash_f_0047drp_itm',true);
 
 
                   </div>
+
+
                   <div class="col-md-6">
                     <div id="reportrange" class="pull-right tapoutdate" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
                       <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
@@ -151,7 +159,7 @@ $cookie_Value_Fst_drP_iT= $this->input->cookie('_dash_f_0047drp_itm',true);
           </div>
           <br />
 
-          
+<?php } ?>
             
 
           </div>

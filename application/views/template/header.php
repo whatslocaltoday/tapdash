@@ -72,7 +72,22 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?php echo base_url()?>admin-assets/images/img.jpg" alt="..." class="img-circle profile_img">
+              <?php 
+              $session_photo=$this->session->userdata('session_photo');
+                if(!empty($session_photo))
+                {
+                  ?>
+                  <img src="<?php echo $session_photo; ?>" alt="..." class="img-circle profile_img">
+                  
+                  <?php 
+                } else
+                {
+                  ?>
+                  <img src="<?php echo base_url()?>admin-assets/images/img.jpg" alt="..." class="img-circle profile_img">
+                  <?php 
+                }
+              ?>
+                
               </div>
               <div class="profile_info">
                 <h2><?php echo $admin_name; 

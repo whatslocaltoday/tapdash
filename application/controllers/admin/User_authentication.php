@@ -1,6 +1,6 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', 'on');
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 //session_start(); //we need to start session in order to access it through CI
@@ -13,16 +13,16 @@ Class User_authentication extends CI_Controller {
         $this->output->set_header('Pragma: no-cache');
         $this->load->helper(array('cookie', 'url'));
         // Load database
+        //$this->config->load('googleplus');
         $this->load->library('form_validation');
         $this->load->model('admin/Login_model');
+        $this->load->library('Googleplus');
     }
 
 
 
 
     // Show login page
-
-
 
 
 
@@ -95,8 +95,9 @@ Class User_authentication extends CI_Controller {
                 redirect(base_url() . 'login');
             }
         } else {
-            $data = array('u_email' => $profileData['email']);
-           
+         
+            $data = array('u_email' => $profileData['email'],'u_photo'=> $profileData['picture']);
+    
             $result12 = $this->Login_model->login_google($data);
             if ($result12 == TRUE) {
                 redirect(base_url() . 'dashboard');
@@ -139,7 +140,7 @@ Class User_authentication extends CI_Controller {
 		{
             $this->googleplus->revokeToken();
         }
-        $sess_array = array('username' => '', 'projID' => '', 'user_id' => '','login_google'=>'','userProfile'=>'', 'uemail' => '', 'role_id' => '', 'session_role_name' => '', 'logged_in' => '', 'user_ap' => '', 'user_name' => '', 'uemail' => '');
+        $sess_array = array('username' => '','session_photo' =>'', 'projID' => '', 'user_id' => '','login_google'=>'','userProfile'=>'', 'uemail' => '', 'role_id' => '', 'session_role_name' => '', 'logged_in' => '', 'user_ap' => '', 'user_name' => '', 'uemail' => '');
         $this->session->unset_userdata('logged_in', $sess_array);
         $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
         $this->output->set_header("Pragma: no-cache");

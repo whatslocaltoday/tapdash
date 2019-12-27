@@ -1,5 +1,5 @@
 <?php 
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Seo extends CI_Controller{
 
     private $logged = '';
@@ -43,7 +43,35 @@ class Seo extends CI_Controller{
              }
 
          }
+         public function index() {
 
+            //ggoole login 
+    
+    
+            if(isset($_GET['code']))
+            {
+                
+                $this->googleplus->getAuthenticate();
+               // $this->session->set_userdata('login_google',true);
+                //$this->session->set_userdata('userProfile',$this->googleplus->getUserInfo());
+               
+                redirect($this->search_page_title());
+            }
+          
+            
+                $data['loginURL'] = $this->googleplus->loginURL();
+                 $data['message_display'] ='';
+                $data['error_message'] ='';
+    
+    
+                $this->load->view('template/header');
+
+                $this->load->view('template/sidebar');
+
+                $this->load->view('seo/login_analytics', $data);
+
+                $this->load->view('template/footer');
+        }
          public function session_check()
 
          {
@@ -133,6 +161,7 @@ class Seo extends CI_Controller{
 
             public function search_page_title()
             {
+               
                 require_once __DIR__ . '/analytics/Check5.php';
 
                 $GA_orgnic_nonorganic=new GA_orgnic_nonorganic();

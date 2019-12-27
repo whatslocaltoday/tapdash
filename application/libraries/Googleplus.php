@@ -7,7 +7,8 @@ class Googleplus {
 	public function __construct() {
 		
 		$CI =& get_instance();
-		$CI->config->load('googleplus');
+		$CI->config->load('googlepluss');
+		
 		
 		require APPPATH .'third_party/google-login-api/apiClient.php';
 		require APPPATH .'third_party/google-login-api/contrib/apiOauth2Service.php';

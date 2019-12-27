@@ -51,6 +51,7 @@
     <script src="<?php echo base_url()?>admin-assets/build/js/custom.min.js"></script>
     <script src="<?php echo base_url()?>admin-assets/build/js/projectown.js"></script>
     <script src="<?php echo base_url()?>admin-assets/build/js/prjchart.js"></script>
+
     <script>
       initSample();
     </script>

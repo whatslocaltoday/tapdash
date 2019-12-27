@@ -27,49 +27,49 @@ function initializeAnalytics()
 
 
 
-// function getFirstProfileId($analytics) {
-//   // Get the user's first view (profile) ID.
+function getFirstProfileId($analytics) {
+  // Get the user's first view (profile) ID.
 
-//   // Get the list of accounts for the authorized user.
-//   $accounts = $analytics->management_accounts->listManagementAccounts();
+  // Get the list of accounts for the authorized user.
+  $accounts = $analytics->management_accounts->listManagementAccounts();
 
-//   if (count($accounts->getItems()) > 0) {
-//     $items = $accounts->getItems();
-    
-//     $firstAccountId = $items[0]->getId();
+  if (count($accounts->getItems()) > 0) {
+    $items = $accounts->getItems();
+  
+    $firstAccountId = $items[3]->getId();
 
  
 
-//    // print $getName = $items[0]->getSelfLink();
+   // print $getName = $items[0]->getSelfLink();
 
-//     // Get the list of properties for the authorized user.
-//     $properties = $analytics->management_webproperties->listManagementWebproperties($firstAccountId);
+    // Get the list of properties for the authorized user.
+    $properties = $analytics->management_webproperties->listManagementWebproperties($firstAccountId);
 
-//     if (count($properties->getItems()) > 0) {
-//       $items = $properties->getItems();
-//       $firstPropertyId = $items[0]->getId();
+    if (count($properties->getItems()) > 0) {
+      $items = $properties->getItems();
+      $firstPropertyId = $items[0]->getId();
 
-//       // Get the list of views (profiles) for the authorized user.
-//       $profiles = $analytics->management_profiles->listManagementProfiles($firstAccountId, $firstPropertyId);
+      // Get the list of views (profiles) for the authorized user.
+      $profiles = $analytics->management_profiles->listManagementProfiles($firstAccountId, $firstPropertyId);
 
-//       if (count($profiles->getItems()) > 0) {
-//         $items = $profiles->getItems();
+      if (count($profiles->getItems()) > 0) {
+        $items = $profiles->getItems();
 
-//         // Return the first view (profile) ID.
-//         // print $items[0]->getId();
+        // Return the first view (profile) ID.
+        // print $items[0]->getId();
         
-//         return $items[0]->getId();
+        return $items[0]->getId();
 
-//       } else {
-//         throw new Exception('No views (profiles) found for this user.');
-//       }
-//     } else {
-//       throw new Exception('No properties found for this user.');
-//     }
-//   } else {
-//     throw new Exception('No accounts found for this user.');
-//   }
-// }
+      } else {
+        throw new Exception('No views (profiles) found for this user.');
+      }
+    } else {
+      throw new Exception('No properties found for this user.');
+    }
+  } else {
+    throw new Exception('No accounts found for this user.');
+  }
+}
 
 
 
@@ -366,6 +366,7 @@ public function web_pageTitle($analytics, $profileId, $start_date, $end_date){
      );
     
      $result2=$aData->getRows();
+    
      arsort($result2);
      return $result2;
  }catch (ExpiredException $e) {
@@ -378,9 +379,9 @@ public function web_pageTitle($analytics, $profileId, $start_date, $end_date){
 
 function OutputData(){
   $analytics= $this->initializeAnalytics();
-  //$profile=$this->getFirstProfileId($analytics);
+  $profile=$this->getFirstProfileId($analytics);
   $errorMsg="";
-  $profile=$_SESSION['projview_id_sesn'];
+  //$profile=$_SESSION['projview_id_sesn'];
 
   $organic=array();
   $nonorganic=array();
@@ -498,9 +499,11 @@ return $data;
 
 function search_title_OutputData(){
   $analytics= $this->initializeAnalytics();
-  //$profile=$this->getFirstProfileId($analytics);
+ print $profile=$this->getFirstProfileId($analytics);
+
+
   $errorMsg="";
-  $profile=$_SESSION['projview_id_sesn'];
+  //$profile=$_SESSION['projview_id_sesn'];
 
 
   $start_dateref="30daysAgo";
@@ -523,6 +526,7 @@ if(!empty($errorMsg))
 }
 else
 {
+  
   $data=array(
     "web_pageTitle"=>$web_pageTitle
     
@@ -539,9 +543,9 @@ return $data;
 
 function search_Soucremdeium_OutputData(){
   $analytics= $this->initializeAnalytics();
-  //$profile=$this->getFirstProfileId($analytics);
+  $profile=$this->getFirstProfileId($analytics);
   $errorMsg="";
-  $profile=$_SESSION['projview_id_sesn'];
+  //$profile=$_SESSION['projview_id_sesn'];
 
 
   $start_dateref="30daysAgo";
@@ -570,9 +574,6 @@ else
   );
 }
 
-
-  
- //print_r($data);
 return $data;
 
 }
@@ -581,9 +582,9 @@ return $data;
 
 function search_keyword_OutputData(){
   $analytics= $this->initializeAnalytics();
-  //$profile=$this->getFirstProfileId($analytics);
+  $profile=$this->getFirstProfileId($analytics);
   $errorMsg="";
-  $profile=$_SESSION['projview_id_sesn'];
+  //$profile=$_SESSION['projview_id_sesn'];
 
   $start_dateref="30daysAgo";
   $end_dateref="today";
@@ -619,9 +620,9 @@ return $data;
 
 function unique_avgTime_OutputData(){
   $analytics= $this->initializeAnalytics();
-  //$profile=$this->getFirstProfileId($analytics);
+  $profile=$this->getFirstProfileId($analytics);
   $errorMsg="";
-  $profile=$_SESSION['projview_id_sesn'];
+  //$profile=$_SESSION['projview_id_sesn'];
 
   $start_dateref="30daysAgo";
   $end_dateref="today";
